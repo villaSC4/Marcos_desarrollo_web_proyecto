@@ -19,9 +19,6 @@
             <div class="Socio">
                 <img src="{{ asset('img/Socios1.png') }}" alt="Socio 1">
             </div>
-            <div class="Socio">
-                <img src="{{ asset('img/Socios1.png') }}" alt="Socio 1 duplicado">
-            </div>
         </section>
     </div>
     

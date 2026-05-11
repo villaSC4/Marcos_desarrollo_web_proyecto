@@ -80,8 +80,6 @@
             </div>
         </div>
 
-        <img src="{{ asset('img/decoracion2.png') }}" class="planta-inferior pi-izq">
-        <img src="{{ asset('img/decoracion2.png') }}" class="planta-inferior pi-der">
     </div>
 </main>
 @endsection

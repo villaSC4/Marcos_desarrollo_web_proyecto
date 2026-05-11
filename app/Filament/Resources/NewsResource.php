@@ -58,21 +58,48 @@ class NewsResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                //
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+       return $table
+        ->columns([
+            Tables\Columns\ImageColumn::make('imagen_portada')
+                ->label('Portada')
+                ->disk('public'), 
+
+            Tables\Columns\TextColumn::make('titulo')
+                ->label('Título')
+                ->searchable()
+                ->sortable(),
+
+            Tables\Columns\TextColumn::make('fecha_publicacion')
+                ->label('Fecha')
+                ->date('d/m/Y')
+                ->sortable(),
+
+            Tables\Columns\IconColumn::make('publicado')
+                ->label('Estado')
+                ->boolean()
+                ->trueIcon('heroicon-o-check-circle')
+                ->falseIcon('heroicon-o-x-circle')
+                ->trueColor('success')
+                ->falseColor('danger'),
+
+            Tables\Columns\TextColumn::make('created_at')
+                ->label('Creado el')
+                ->dateTime()
+                ->toggleable(isToggledHiddenByDefault: true),
+        ])
+        ->filters([
+            Tables\Filters\TernaryFilter::make('publicado')
+                ->label('Publicado'),
+        ])
+        ->actions([
+            Tables\Actions\EditAction::make(),
+            Tables\Actions\DeleteAction::make(), 
+        ])
+        ->bulkActions([
+            Tables\Actions\BulkActionGroup::make([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]),
+        ]);
     }
 
     public static function getRelations(): array

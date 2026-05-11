@@ -29,8 +29,8 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
                 <div class="col">
                     <div class="contenedor-video">
-                        <video controls poster="{{ asset('img/poster-video.jpg') }}">
-                            <source src="{{ asset('video1.mp4') }}" type="video/mp4">
+                        <video controls poster="{{ asset('img/video1.png') }}">
+                            <source src="{{ asset('video/diaDelRecicladorMotivoTetraPak.mp4') }}" type="video/mp4">
                             Tu navegador no soporta videos.
                         </video>
                         <p class="video-descripcion">Aprende a reciclar con los expertos</p>
@@ -38,16 +38,16 @@
                 </div>
                 <div class="col">
                     <div class="contenedor-video">
-                        <video controls poster="{{ asset('img/poster-video.jpg') }}">
-                            <source src="{{ asset('video2.mp4') }}" type="video/mp4">
+                        <video controls poster="{{ asset('img/video2.png') }}">
+                            <source src="{{ asset('video/familiaDe3.mp4') }}" type="video/mp4">
                         </video>
                         <p class="video-descripcion">Aprende a reciclar con los expertos</p>
                     </div>
                 </div>
                 <div class="col">
                     <div class="contenedor-video">
-                        <video controls poster="{{ asset('img/poster-video.jpg') }}">
-                            <source src="{{ asset('video3.mp4') }}" type="video/mp4">
+                        <video controls poster="{{ asset('img/video3.png') }}">
+                            <source src="{{ asset('video/motivo.mp4') }}" type="video/mp4">
                         </video>
                         <p class="video-descripcion">Aprende a reciclar con los expertos</p>
                     </div>
