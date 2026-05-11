@@ -1,0 +1,133 @@
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#fff;
+text-align:center;
+
+}
+
+.menu{
+    display:flex;
+    justify-content:right;
+    gap:25px;
+    list-style:none;
+    margin-top: 20px;
+    margin-right: -200px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-size:17px;
+    font-weight:500;
+}
+
+main {
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.etiqueta1{
+    background:white;
+    padding:6px 20px;
+    font-weight:bold;
+    color:#2D4F32;
+    margin-top:40px;
+    transform: rotate(-2deg);
+}
+
+.etiqueta2{
+    background:black;
+    color:white;
+    padding:10px 30px;
+    font-size:60px;
+    display:inline-block;
+    margin-top:20px;
+
+}
+
+.titulo3{
+    font-size:30px;
+    color:#2D4F32;
+    margin-top:50px;
+    font-weight: 1000;
+}
+
+.descripcion{
+    max-width:700px;
+    margin:20px auto;
+    font-weight:bold;
+    color:#2D4F32;
+}
+
+
+
+.Socios{
+    display:grid;
+    grid-template-columns:repeat(1,1fr);
+    gap:40px;
+    max-width:1200px;
+    margin:60px auto;
+}
+
+.Socio{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.Socio img{
+    width:900px;
+    display:block;
+    margin:auto;
+    padding:10px;
+}
+
+
+.puntos{
+    color:#1fa67a;
+    font-weight:bold;
+}
+
+@media (max-width:900px){
+
+.navbar{
+    flex-direction:column;
+    gap:20px;
+}
+
+.menu{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.productos{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media (max-width:500px){
+
+.productos{
+    grid-template-columns:1fr;
+}
+
+.titulo-productos{
+    font-size:28px;
+}
+
+.etiqueta2{
+    font-size:40px;
+}
+
+}

@@ -1,0 +1,437 @@
+.recicla-hero {
+    background-color: #dde8dc; 
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.etiquetas-container {
+    font-family: 'Alfa Slab One', cursive; 
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.tag-en {
+    background: #4a7c47;
+    color: white;
+    padding: 5px 15px;
+    font-size: 1.5rem;
+    display: inline-block;
+    transform: rotate(-5deg);
+    margin-right: 5px;
+}
+
+.tag-recicla {
+    background: #e1ede2;
+    color: #373022;
+    padding: 5px 25px;
+    font-size: 2.5rem;
+    display: inline-block;
+    transform: rotate(-2deg);
+}
+
+.tag-consciente {
+    background: #373022;
+    color: white;
+    padding: 10px 40px;
+    font-size: 3.5rem;
+    display: inline-block;
+    margin-top: 10px;
+    transform: rotate(-1deg);
+}
+
+.hero-descripcion {
+    font-family: 'Afacad', sans-serif;
+    color: #2d4f32;
+    font-size: 1.8rem;
+    max-width: 500px;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.hero-imagen-wrapper {
+    position: relative;
+}
+
+.img-curva {
+    width: 500px;
+    height: 450px;
+    object-fit: cover;
+}
+
+.seccion-videos-casa {
+    background-color: #2d4f32; 
+    padding: 80px 0;
+}
+
+.titulo-seccion {
+    background: #373022; 
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 3rem;
+    padding: 10px 50px;
+    margin-bottom: 50px;
+    display: inline-block;
+    transform: rotate(0deg); 
+}
+
+.contenedor-video {
+    text-align: left; 
+}
+
+.contenedor-video video {
+    width: 100%;
+    height: auto;
+    border-radius: 0px; 
+    display: block;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.video-descripcion {
+    color: white;
+    font-family: 'Afacad', sans-serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-top: 15px;
+    line-height: 1.2;
+    max-width: 90%;
+}
+
+.seccion-estaciones {
+    background-color: #BED2BC; 
+    padding: 80px 0;
+}
+
+.texto-previo {
+    font-family: 'Afacad', sans-serif;
+    color: #2d4f32;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.titulos-estaciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.bloque-verde {
+    background-color: #4ade80; 
+    color: #2d4f32;
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 4.5rem;
+    padding: 5px 40px;
+    margin: 0;
+    line-height: 1;
+    z-index: 2;
+}
+
+.bloque-oscuro {
+    background-color: #2d4f32; 
+    color: white;
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 4.5rem;
+    padding: 10px 60px;
+    margin-top: -10px; 
+    line-height: 1;
+    z-index: 1;
+}
+
+.contenedor-estacion-img {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contenedor-estacion-img img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.contenedor-papel {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #BED2BC;
+}
+
+.tarjeta-informativa {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    border: 3px solid #1a4d66; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.encabezado-azul {
+    background-color: #2b5d77; 
+    padding: 10px 30px;
+    position: absolute;
+    top: -25px; 
+    left: 20px;
+    z-index: 10;
+    min-width: 250px;
+}
+
+.titulo-verde {
+    color: #4ade80; 
+    font-family: 'Arial Black', Gadget, sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.cuerpo-imagen {
+    width: 100%;
+    line-height: 0; 
+}
+
+.img-contenido {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.seccion-listado-sedes {
+    background-color: #dde8dc; 
+}
+
+.texto-ubica {
+    font-family: 'Afacad', sans-serif;
+    color: #2d4f32;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.titulo-estaciones {
+    font-size: 2.8rem;
+    padding: 5px 30px;
+}
+
+.tarjeta-sede {
+    background: white;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-sede:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.contenedor-img-estacion {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.contenedor-img-estacion img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.nombre-sede-bloque {
+    background-color: #2d4f32; 
+    color: white;
+    font-family: 'Afacad', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.btn-carga-mas {
+    background-color: white;
+    color: #2d4f32;
+    border: none;
+    padding: 12px 60px;
+    border-radius: 50px;
+    font-family: 'Afacad', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.btn-carga-mas:hover {
+    background-color: #2d4f32;
+    color: white;
+    transform: scale(1.05);
+}
+
+.seccion-impacto {
+    background: linear-gradient(rgba(14, 34, 56, 0.75), rgba(14, 34, 56, 0.75)), 
+                url('../img/fondo-recicla.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    height: 400px; 
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.texto-impacto-superior {
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.cifra-reciclaje {
+    font-family: 'Alfa Slab One', cursive; 
+    font-size: 5rem;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.seccion-gracias {
+    background-color: #ffffff; 
+    padding-bottom: 80px;
+}
+
+.titulo-gracias {
+    font-family: 'Alfa Slab One', cursive;
+    color: #2d4f32;
+    font-size: 5rem;
+    display: inline-block;
+    transform: rotate(-3deg);
+    margin-bottom: 30px;
+}
+
+.texto-apoyo {
+    font-family: 'Afacad', sans-serif;
+    color: #666;
+    font-size: 1.4rem;
+    max-width: 800px;
+    line-height: 1.4;
+}
+
+.impacto-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circulo-icono {
+    background-color: #2b5d77; 
+    color: #4ade80; 
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.impacto-item:hover .circulo-icono {
+    transform: scale(1.1);
+}
+
+.impacto-label {
+    font-family: 'Afacad', sans-serif;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.impacto-valor {
+    font-family: 'Afacad', sans-serif;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+@media (max-width: 768px) {
+    .seccion-videos-casa {
+        padding: 40px 20px;
+    }
+    .titulo-seccion {
+        font-size: 2rem;
+    }
+    .bloque-verde, .bloque-oscuro {
+        font-size: 2.2rem;
+        padding: 10px 20px;
+    }
+    
+    .texto-previo {
+        font-size: 1.2rem;
+    }
+
+    .titulos-estaciones {
+        margin-bottom: 30px;
+    }
+    .encabezado-azul {
+        position: relative; 
+        top: 0;
+        left: 0;
+        text-align: center;
+    }
+    
+    .titulo-verde {
+        font-size: 1.4rem;
+    }
+
+    .tarjeta-informativa {
+        border-width: 2px;
+    }
+    .titulo-estaciones {
+        font-size: 1.8rem;
+    }
+    .seccion-impacto {
+        height: 300px;
+    }
+    
+    .texto-impacto-superior {
+        font-size: 1.2rem;
+    }
+    
+    .cifra-reciclaje {
+        font-size: 3rem;
+    }
+
+    .titulo-gracias {
+        font-size: 3rem;
+    }
+    
+    .circulo-icono {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .recicla-hero .container {
+        text-align: center;
+        justify-content: center !important;
+    }
+    
+    .tag-recicla { font-size: 1.8rem; }
+    .tag-consciente { font-size: 2.5rem; }
+    
+    .img-curva {
+        width: 300px;
+        height: 280px;
+        margin-top: 30px;
+    }
+}

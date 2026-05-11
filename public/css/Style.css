@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column; 
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+main {
+    flex: 1; 
+}
+
+a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+h1 {
+    color: white;
+    font-size: 65px; 
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    background-color: #2D2618;
+    display: inline-block; 
+    padding: 10px 30px;
+    line-height: 1.1;
+    width: auto;
+}
+
+.titulo-inclinado {
+    transform: rotate(-5deg);
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: #1E5631;
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    display: inline-block; 
+    padding: 5px;
+}
+.rot{
+    color: #1E5631;
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    display: inline-block; 
+    padding: 5px;
+    transform: rotate(-1deg);
+}
+.Prensa {
+position: relative; 
+    width: 100%;
+    text-align: center;
+    padding: 80px 0; 
+    background-color: white;
+    
+}
+.container-prensa {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5; 
+}
+
+.titulo-inclinado {
+    background-color: #2D2618;
+    color: white;
+    padding: 10px 35px;
+    display: inline-block;
+    transform: rotate(-5deg);
+    font-family: 'Arial Black', sans-serif;
+    font-size: 55px;
+    margin-bottom: 25px;
+}
+.Prensa p {
+    color: #1E5631;
+    font-size: 35px;
+    line-height: 1.5;
+    max-width: 1500px;
+}
+
+.planta-colgante {
+   position: absolute;
+    top: -40px; 
+    width: 290px; 
+    height: auto;
+}
+
+.p-izq { 
+    left: -60px; 
+}  
+
+.p-der { 
+    right: -60px; 
+}
+
+.Noticias {
+    background-color: #4B7447; 
+    color: #ffffff;
+    padding: 60px 0; 
+    text-align: center;
+    width: 100vw; 
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+.Noticias p{
+    color: #ffffff;
+    font-size: 25px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    max-width: 1235px; 
+    margin-left: auto;  
+    margin-right: auto;
+}
+
+.contenedor-noticias {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.noticia-card {
+    background-color: transparent; 
+    width: 380px;
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+}
+
+.noticia-card span.fecha {
+    color: #ffffff;
+}
+
+
+.contenido a.boton {
+    color: #265970;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    background-color: #59d915; 
+    display: inline-block; 
+    padding: 10px 20px; 
+}
+
+.noticia-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+} 
+
+.cuerpo-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    padding: 20px 10px;
+}
+
+.noticia-card h3 {
+    color: #265970; 
+    font-size: 16px;
+    margin-bottom: 15px;
+    min-height: 50px; 
+}
+
+.noticia-card .fecha {
+    color: #ffffff;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.noticia-card p {
+   color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    text-align: center; 
+    max-width: 280px; 
+    margin-left: auto;  
+    margin-right: auto;
+}
+
+.boton-nota {
+    background-color: #60FF8F; 
+    color: #265970;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-family: 'Arial Black', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    width: fit-content;
+    align-self: center; 
+    margin-top: auto;
+    font-size: 14.5px;
+}
+
+.Videos {
+    background-color: white;
+    color: #373022;
+    padding: 60px 40px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 45px;
+    position: relative;
+    overflow: visible;
+}
+
+.Videos h1 {
+    color: #ffffff;
+}
+
+.video-card {
+    background-color: #24546A;
+    color: white;
+    padding: 20px;
+    margin: 30px;
+    display: inline-block;
+    text-align: center;
+    max-width: 580px;
+    vertical-align: top;
+}
+
+.video-card h5 {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #60FF8F;
+}
+.video-card p{
+font-size: 20px;
+}
+
+.planta-inferior {
+    position: absolute;
+    bottom: -40px;      
+    width: 140px;       
+    height: 365px;
+    z-index: 5; 
+    pointer-events: none;
+}
+
+.pi-izq {
+    left: -40px;            
+}
+
+.pi-der {
+    right: -45px;          
+}
+
+main:not(.Prensa):not(.Noticias):not(.Videos) {
+    background-color: white;
+    color: #265970;
+    padding: 40px;
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#Principal {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.Descarga {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    background-color: #2D2618;
+    padding: 15px 30px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.titulo-detalle-noticia {
+    font-size: 2.5rem;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.contenido-noticia-detalle {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: justify;
+}
+
+.contenido-noticia-detalle h2, .contenido-noticia-detalle h3 {
+    color: var(--v-oscuro);
+    margin-top: 1.5rem;
+    font-weight: bold;
+}
+
+.contenido-noticia-detalle img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.fecha-detalle {
+    font-size: 0.95rem;
+    text-transform: capitalize;
+}
+
+.rc-bloque-negro-noticia {
+    background-color: #3e3a35; 
+    color: #ffffff;           
+    font-family: 'Agbalumo', cursive;
+}

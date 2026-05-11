@@ -1,0 +1,435 @@
+@import url("https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Agbalumo&family=Alfa+Slab+One&display=swap");
+
+:root {
+  --v-oscuro: #2d4f32;
+  --v-claro: #868686;
+  --f-verde: #dde8dc;
+}
+
+body {
+  background-color: var(--f-verde);
+  font-family: "Arial", sans-serif;
+  overflow-x: hidden;
+}
+
+.navbar-toggler {
+  border: solid 2px var(--v-claro);
+}
+
+.nav-sup {
+  background-color: var(--v-oscuro);
+  font-family: "Agbalumo";
+  padding-bottom: 0.75rem;
+  align-items: flex-end;
+}
+
+.nav-sup .navbar-collapse,
+.nav-sup .navbar-nav {
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.nav-sup a {
+  color: white;
+  padding: 0.85rem 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+
+  &:hover {
+    scale: 0.95;
+  }
+}
+
+.nav-sup .nav-item {
+  margin-bottom: 0.25rem;
+}
+
+.Logo img {
+  width: 200px;
+  height: auto;
+}
+
+.logo-tottus {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  width: 200px;
+  height: auto;
+}
+
+.auth-buttons {
+    gap: 10px;
+}
+
+.btn-auth {
+    background-color: white;
+    color: #2d4f32 !important;
+    border-radius: 50px; 
+    padding: 5px 25px;
+    text-decoration: none;
+    font-family: 'Agbalumo', cursive; 
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.btn-auth:hover {
+    background-color: #f8f8f8;
+    color: #2d4f32;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.logo-tottus {
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .auth-buttons {
+        display: none; 
+    }
+}
+
+.rc-decoracion {
+  position: relative;
+
+  .deco1 {
+    position: absolute;
+    left: 0;
+    width: 300px;
+    height: auto;
+  }
+  .deco2 {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: auto;
+  }
+}
+
+.rc-bloque-negro {
+  font-family: "Alfa Slab One";
+  background: #373022;
+  color: white;
+  display: inline-block;
+  padding: 5px 20px;
+  font-size: 2rem;
+  transform: rotate(-2deg);
+}
+
+.rc-bloque-negro.grande {
+  font-family: "Alfa Slab One";
+  font-size: 3.5rem;
+  margin-top: 5px;
+  transform: rotate(-1deg);
+}
+
+.rc-texto-guia {
+  font-family: "Afacad";
+  max-width: 500px;
+  margin: 20px auto;
+  font-size: 1.4rem;
+}
+
+.rc-casa-total {
+  max-width: 750px;
+  position: relative;
+}
+
+.rc-techo {
+  background-color: brown;
+  height: 110px;
+  width: 110%;
+  margin: 0 auto;
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  transform: translateX(-35px);
+}
+
+.rc-cuarto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: wheat;
+  padding: 10px;
+  gap: 10px;
+}
+
+.rc-celda {
+  position: relative;
+  height: 250px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #ddd;
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+.rc-celda img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.rc-capa {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: 0.3s;
+  opacity: 0;
+
+  & h3 {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.rc-celda:hover .rc-capa {
+  opacity: 1;
+}
+
+.rc-decoracion-2 {
+  position: relative;
+  transform: translateY(-180px);
+  .deco3 {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    height: auto;
+  }
+  .deco4 {
+    position: absolute;
+    right: 0;
+    width: 200px;
+    height: auto;
+  }
+}
+
+.rc-suelo {
+  background-color: white;
+  border: solid 1px var(--v-oscuro);
+  padding: 20px;
+  width: 110%;
+  transform: translateX(-35px);
+  font-size: 20px;
+  text-align: center;
+  color: black;
+}
+
+.rc-overlay-centrado {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.rc-cuadrante-info {
+  background: white;
+  width: 100%;
+  max-width: 550px;
+  position: relative;
+  border-radius: 8px;
+  overflow: visible;
+  animation: aparecer 0.3s ease-out;
+  border: 20px solid var(--v-oscuro);
+}
+
+@keyframes aparecer {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.rc-titulo-pop {
+  background: #3e3a35;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 10px;
+  text-align: center;
+  margin: 20px auto;
+  width: 60%;
+}
+
+.rc-img-pop {
+  width: 80%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.rc-cerrar-x {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+
+  &:hover {
+    color: darkred;
+  }
+}
+
+.rc-flecha-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 40px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: #00b1a9;
+  }
+}
+
+.ant {
+  left: -70px;
+}
+.sig {
+  right: -70px;
+}
+
+.rc-cuerpo-pop {
+  padding: 10px 20px 30px;
+}
+
+.rc-pie-pagina {
+  font-family: "Inter";
+  background-color: #2d4f32;
+  padding: 60px 0;
+  color: white;
+}
+
+.rc-logo-footer {
+  max-width: 220px;
+  height: auto;
+}
+
+.rc-iconos-sociales {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.rc-iconos-sociales a {
+  background: white;
+  color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: 0.3s;
+
+  &:hover {
+    background: #e1ede2;
+    transform: translateY(-3px);
+  }
+}
+
+.rc-lista-enlaces {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  & li {
+    margin-bottom: 15px;
+  }
+  & a {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+
+    &:hover {
+      scale: 0.95;
+      color: rgb(206, 206, 206);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-tottus {
+    display: none;
+  }
+  .rc-decoracion {
+    display: none;
+  }
+  .rc-decoracion-2 {
+    display: none;
+  }
+
+  .rc-cuadrante-info {
+    border: 10px solid var(--v-oscuro);
+    max-width: 90%;
+  }
+
+  .rc-titulo-pop {
+    font-size: 1.5rem;
+    width: 80%;
+    padding: 8px;
+  }
+
+  .rc-img-pop {
+    height: 180px;
+    width: 90%;
+  }
+
+  .rc-cerrar-x {
+    font-size: 30px;
+  }
+
+  .rc-flecha-nav {
+    font-size: 30px;
+    padding: 8px;
+  }
+
+  .ant {
+    left: -50px;
+  }
+  .sig {
+    right: -50px;
+  }
+
+  .rc-cuerpo-pop {
+    padding: 8px 15px 20px;
+  }
+}

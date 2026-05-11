@@ -1,0 +1,293 @@
+/*PARTE PRINCIPAL SUPERIOR DE LA PAGINA*/
+body{
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/*PARTE SIGUIENTE  DE LA PAGINA (HEADER)*/
+.seccion-inscripcion { position: relative; font-family: sans-serif; }
+
+.banner-superior-verde {
+    background-color: #F9FBF9;
+    padding: 120px 20px 60px 20px; 
+    text-align: center;
+}
+.banner-superior-verde p {
+    max-width: 850px;
+    margin: 0 auto 25px auto;
+    font-size: 22px;
+    line-height: 1.6;
+    font-family: system-ui, sans-serif;
+    font-weight: 400;
+    color: #333;
+}
+.header-sticker {
+    margin: 40px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.planta-decorativa{
+    position: absolute;
+    top: 20px; 
+    width: 210px;
+    z-index: 10;
+}
+.planta-decorativa.left{
+    left: 2%;
+}
+.planta-decorativa.right{
+    right: 2%;
+}
+
+.txt-unete {
+    color: #1D1D1B;
+    font-size: 60px; 
+    font-weight: 900;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px; 
+    transform: rotate(-2deg); 
+    font-family: 'Arial Black', sans-serif; 
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+
+.txt-reciclaje {
+    background-color: #2D4F32; 
+    color: #FFFFFF ;
+    font-size: 74px ; 
+    font-weight: 900 ;
+    padding: 10px 40px ;
+    display: inline-block ;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: bold;
+    transform: rotate(-2deg); 
+    box-shadow: 10px 10px 0px black; 
+    line-height: 1;
+    letter-spacing: -4px;
+    font-family: 'Arial Black', sans-serif;
+}
+/*PARTE MEDIA DE LA PAGINA INSCRIBETE AQUI PARA PODER TENER EL FORMULARIO*/
+.franja-inferior-verde {
+    background-color: #699E64;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 60px 10% 20px 10%;
+    min-height: 280px; 
+    position: relative;
+    overflow: visible;
+    clip-path: ellipse(150% 100% at 50% 100%);
+}
+.bloque-inscripcion{
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: -40px;
+    z-index: 5;
+}
+.texto-llamado {
+    color: white;
+    font-size: 38px; 
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 35px;
+    max-width: 550px;
+    font-family: 'Arial Black', sans-serif;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.img-persona{
+    position: absolute; 
+    right: 12%;         
+    bottom: 0;         
+    max-height: 450px;  
+    width: auto;
+    z-index: 20;    
+    transform: translateY(0);
+}
+.boton-sticker-verde {
+    display: inline-block; 
+    background-color: #2D2D2D;
+    color: white ;
+    padding: 15px 50px;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    transform: rotate(-2deg);
+    box-shadow: 10px 10px 0px black;
+    transition: transform 0.2s ease;
+    font-family: 'Arial Black', sans-serif;
+}
+.boton-sticker-verde:hover{
+    transform: rotate(0deg) scale(1.07);
+}
+.seccion-inscripcion{
+    background-color: #FFFFFF;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+}
+/*PARTE CASI FINAL DE LOS ALIADOS DE LA MUNICIPALIDAD*/
+.seccion-aliados {
+    background-color: #FFFFFF; 
+    padding: 80px 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contenedor-titulo-aliados {
+    color: #2D4F32;
+    font-size: 50px;
+    margin-top: 40px;
+    font-family: 'Arial Black', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sticker-aliados {
+    background-color: black; 
+    color: white ;
+    font-size: 50px ; 
+    font-weight: 900 ;
+    padding: 10px 40px ;
+    display: inline-block ;
+    text-transform: uppercase;
+    font-weight: bold;
+    transform: rotate(-2deg); 
+    box-shadow: 8px 8px 0px black; 
+    font-family:'Arial Black', sans-serif;
+}
+/*PARTE DE LOS LOGOS QUE ESTAN DEBAJO DE MUNICIPALIDADES ALIADAS*/
+.grid-logos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 40px;
+    max-width: 1000px;
+    margin: 60px auto;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.circulo-logo {
+    background: white;
+    border-radius: 50%;
+    width: 230px; 
+    height: 230px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    overflow: hidden; 
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    transition: transform 0.3s ease;
+}
+.circulo-logo:hover{
+    transform: scale(1.05);
+}
+
+.circulo-logo img {
+    max-width: 80%; 
+    max-height: 80%; 
+    width: auto;     
+    height: auto;    
+    object-fit: contain; 
+    justify-content: center; 
+    align-items: center; 
+}
+.titulo-muni{
+    color: #4A7844; 
+    font-size: 45px;
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+}
+
+/*LA PARTE FINAL DE LA PAGINA EL FOOTER DONDE ESTÁN LA PARTE DE INFORMACIÓN Y REDES DE LA PAGINA*/
+
+.footer-principal {
+    background-color: #2D4F32;
+    padding: 60px 5%;
+    width: 100%;
+}
+
+.footer-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-col-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-footer {
+    height: 150px;
+    width: auto;
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 15px;
+}
+
+.redes-sociales img {
+    max-width: 80px;       
+    height: auto;
+    display: block;
+}
+
+.footer-col-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-col-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.footer-col-links a::before {
+    content: "➔";
+    margin-right: 10px;
+    font-size: 12px;
+    color: #79f295;
+}
+
+.footer-col-links a:hover {
+    color: #79f295;
+    text-decoration: underline;
+}
+.footer-col-logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
