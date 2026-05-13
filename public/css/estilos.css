@@ -361,6 +361,27 @@
     font-size: 1.3rem;
 }
 
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-item {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+}
+
+.dropdown-menu {
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.btn-blanco-redondo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+
 @media (max-width: 768px) {
     .seccion-videos-casa {
         padding: 40px 20px;

@@ -19,4 +19,9 @@ class News extends Model
         'publicado',
         'fecha_publicacion',
     ];
+
+    protected $casts = [
+        'publicado' => 'boolean',
+        'fecha_publicacion' => 'date',
+    ];
 }

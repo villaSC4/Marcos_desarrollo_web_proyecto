@@ -20,13 +20,14 @@
         <div class="col-md-6 form-panel">
             <h2 class="text-center mb-4" style="color: var(--dark-green); font-family: 'Alfa Slab One', cursive;">Iniciar Sesión</h2>
             
-            <form action="#" method="POST">
+            <form action="{{ route('login.store') }}" method="POST">
+                @csrf
                 
                 <div class="mb-4">
                     <label class="form-label small fw-bold">Correo Electrónico</label>
                     <div class="custom-input-group">
                         <i class="bi bi-envelope"></i>
-                        <input type="email" name="email" placeholder="ejemplo@correo.com" required>
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="ejemplo@correo.com" required autofocus>
                     </div>
                 </div>
 
@@ -43,7 +44,14 @@
                     <a href="#" class="text-muted small text-decoration-none">¿Olvidaste tu Contraseña?</a>
                 </div>
 
-                <button type="submit" class="btn btn-ingresar mb-4">Ingresar</button>
+                @if ($errors->any())
+                    <div class="alert alert-danger py-2 mb-4" style="font-size: 0.85rem;">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
+                <button type="submit" class="btn btn-ingresar mb-4 w-100">Ingresar</button>
 
                 <div class="text-center position-relative mb-4">
                     <hr>
@@ -56,7 +64,7 @@
                 </div>
 
                 <div class="text-center small">
-                    ¿No tienes cuenta? <a href="{{ route('unete') }}" class="text-success fw-bold text-decoration-none">Regístrate</a>
+                    ¿No tienes cuenta? <a href="{{ route('register') }}" class="text-success fw-bold text-decoration-none">Regístrate</a>
                 </div>
             </form>
         </div> 

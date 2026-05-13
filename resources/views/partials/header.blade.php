@@ -10,8 +10,29 @@
             
             <div class="d-flex align-items-center mb-2">
                 <div class="auth-buttons d-flex gap-2 me-3">
-                    <a href="{{ route('login') }}" class="btn-blanco-redondo">Iniciar Sesión</a>
-                    <a href="{{ route('register') }}" class="btn-blanco-redondo">Crear Cuenta</a>
+                    @if(auth()->guard('colaborador')->check())
+                        <div class="dropdown">
+                            <button class="btn-blanco-redondo dropdown-toggle d-flex flex-column align-items-end" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false" style="line-height: 1.2; padding: 5px 20px;">
+                                <span class="fw-bold" style="font-size: 0.9rem;">{{ auth()->guard('colaborador')->user()->nombres }}</span>
+                                <span class="text-success" style="font-size: 0.75rem;">
+                                    <i class="bi bi-star-fill"></i> {{ auth()->guard('colaborador')->user()->puntos_acumulados }} pts
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="userMenu">
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger d-flex align-items-center gap-2">
+                                            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    @else
+                        <a href="{{ route('login') }}" class="btn-blanco-redondo">Iniciar Sesión</a>
+                        <a href="{{ route('register') }}" class="btn-blanco-redondo">Crear Cuenta</a>
+                    @endif
                 </div>
                 
                 <div class="bg-white p-1 rounded">

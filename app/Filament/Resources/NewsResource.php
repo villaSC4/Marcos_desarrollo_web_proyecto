@@ -12,12 +12,24 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Repeater; 
+use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Str;
 
 class NewsResource extends Resource
 {
     protected static ?string $model = News::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+   protected static ?string $modelLabel = 'Noticia';
+    protected static ?string $pluralModelLabel = 'Noticias';
+    protected static ?string $navigationLabel = 'Noticias';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper'; 
 
     public static function form(Form $form): Form
     {
@@ -35,9 +47,16 @@ class NewsResource extends Resource
                         ->unique(ignoreRecord: true),
 
                     \Filament\Forms\Components\FileUpload::make('imagen_portada')
+                        ->label('Imagen de Portada')
                         ->image()
-                        ->directory('noticias') 
-                        ->required(),
+                        ->imageEditor()
+                        ->directory('noticias')
+                        ->disk('public')
+                        ->required()
+                        ->getUploadedFileNameForStorageUsing(
+                            fn (\Illuminate\Http\UploadedFile $file): string => (string) str($file->getClientOriginalName())->prepend(now()->timestamp . '_'),
+                        )
+                        ->columnSpanFull(),
 
                     \Filament\Forms\Components\Textarea::make('resumen')
                         ->required()
@@ -62,7 +81,9 @@ class NewsResource extends Resource
         ->columns([
             Tables\Columns\ImageColumn::make('imagen_portada')
                 ->label('Portada')
-                ->disk('public'), 
+                ->disk('public')
+                ->visibility('public')->url(fn ($record) => asset('storage/' . $record->imagen_portada))
+                ->circular(),
 
             Tables\Columns\TextColumn::make('titulo')
                 ->label('Título')
