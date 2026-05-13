@@ -10,14 +10,10 @@ class Colaborador extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * Nombre explícito de la tabla en español.
-     */
+   
     protected $table = 'colaboradores';
 
-    /**
-     * Atributos que se llenan desde el formulario web.php + lógicas de sistema.
-     */
+
     protected $fillable = [
         'nombres',
         'apellidos',
@@ -37,9 +33,7 @@ class Colaborador extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * Conversiones nativas para que PHP maneje los tipos correctos.
-     */
+   
     protected function casts(): array
     {
         return [
