@@ -31,13 +31,13 @@
         <div class="producto">
             <div class="circulo"><img src="{{ asset('img/shampoo.jpg') }}" alt="Yogurt"></div>
             <p class="nombre-prod">Shampoo</p>
-            <p class="puntos">20 puntos</p>
+            <p class="puntos">28 puntos</p>
         </div>
 
         <div class="producto">
             <div class="circulo"><img src="{{ asset('img/milo.jpg') }}" alt="Milo"></div>
             <p class="nombre-prod">Milo</p>
-            <p class="puntos">5 puntos</p>
+            <p class="puntos">10 puntos</p>
         </div>
 
         <div class="producto">
