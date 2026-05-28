@@ -30,6 +30,11 @@
             padding: 10px;
             font-size: 0.9rem;
         }
+        /* Estilo visual nativo cuando el navegador detecta que un campo es inválido */
+        .form-control:invalid:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+        }
         .btn-crear { 
             background-color: var(--v-oscuro); 
             color: white; 
@@ -73,18 +78,21 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Nombres</label>
-                        <input type="text" name="nombres" class="form-control" placeholder="Nombres" required>
+                        <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" title="El nombre solo debe contener letras y espacios." required>
+                        <div id="nombres-error" class="text-danger small mt-1" style="display: none;"></div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Apellidos</label>
-                        <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
+                        <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$" title="El apellido solo debe contener letras y espacios." required>
+                        <div id="apellidos-error" class="text-danger small mt-1" style="display: none;"></div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Fecha de Nacimiento</label>
-                        <input type="date" name="fecha_nacimiento" class="form-control" required>
+                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" required>
+                        <div id="fecha-error" class="text-danger small mt-1" style="display: none;"></div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Género</label>
@@ -97,11 +105,18 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Correo electrónico</label>
-                    <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
-                </div>
-
+<div class="mb-3">
+    <label class="form-label">Correo electrónico</label>
+    <input type="email" 
+           id="email"
+           name="email" 
+           class="form-control" 
+           placeholder="ejemplo@gmail.com" 
+           pattern="^[a-zA-Z0-9._%+-]+@(gmail|outlook)\.com(\.pe)?$"
+           title="Solo se permiten correos de Gmail o Outlook (ej: usuario@gmail.com o usuario@outlook.com)."
+           required>
+    <div id="email-error" class="text-danger small mt-1" style="display: none;"></div>
+</div>
                 <div class="mb-3">
                     <label class="form-label">Contraseña nueva</label>
                     <input type="password" name="password" class="form-control" placeholder="Contraseña nueva" required>
@@ -126,6 +141,7 @@
     </div>
 </div>
 
+<script src="<?php echo e(asset('js/registro.js')); ?>"></script>
 <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </body>
 </html><?php /**PATH C:\Users\ASUS\Desktop\recicla-web\recicla-web\resources\views/pages/registro.blade.php ENDPATH**/ ?>
