@@ -28,53 +28,28 @@
     </p>
 
     <section class="productos">
-        <div class="producto">
-            <div class="circulo"><img src="<?php echo e(asset('img/shampoo.jpg')); ?>" alt="Yogurt"></div>
-            <p class="nombre-prod">Shampoo</p>
-            <p class="puntos">28 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="<?php echo e(asset('img/milo.jpg')); ?>" alt="Milo"></div>
-            <p class="nombre-prod">Milo</p>
-            <p class="puntos">10 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="<?php echo e(asset('img/ayudin.jpg')); ?>" alt="Ayudin"></div>
-            <p class="nombre-prod">Ayudin</p>
-            <p class="puntos">18 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="<?php echo e(asset('img/aceite.jpg')); ?>" alt="Aceite"></div>
-            <p class="nombre-prod">Aceite</p>
-            <p class="puntos">10 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="<?php echo e(asset('img/detergente.jpg')); ?>" alt="Detergente"></div>
-            <p class="nombre-prod">Detergente</p>
-            <p class="puntos">30 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="<?php echo e(asset('img/suaviante.jpg')); ?>" alt="Suavizante"></div>
-            <p class="nombre-prod">Suavizante</p>
-            <p class="puntos">35 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="<?php echo e(asset('img/desodorante.jpg')); ?>" alt="Desodorante"></div>
-            <p class="nombre-prod">Desodorante</p>
-            <p class="puntos">15 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="<?php echo e(asset('img/olivo.jpg')); ?>" alt="Aceite de Olivo"></div>
-            <p class="nombre-prod">Aceite de Olivo</p>
-            <p class="puntos">20 puntos</p>
-        </div>
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($productos->isEmpty()): ?>
+            
+            <p class="descripcion" style="text-align: center; grid-column: 1 / -1; width: 100%;">
+                Próximamente se añadirán nuevos productos para canje. ¡Sigue reciclando!
+            </p>
+        <?php else: ?>
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="producto">
+                    <div class="circulo">
+                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($producto->imagen): ?>
+                            
+                            <img src="<?php echo e(asset('storage/' . $producto->imagen)); ?>" alt="<?php echo e($producto->nombre); ?>">
+                        <?php else: ?>
+                            
+                            <img src="<?php echo e(asset('img/default-product.jpg')); ?>" alt="<?php echo e($producto->nombre); ?>">
+                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    </div>
+                    <p class="nombre-prod"><?php echo e($producto->nombre); ?></p>
+                    <p class="puntos"><?php echo e($producto->costo_puntos); ?> puntos</p>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
     </section>
 </main>
 <?php $__env->stopSection(); ?>

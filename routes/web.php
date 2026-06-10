@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\News;
 use App\Models\Colaborador;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,8 +22,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+// RUTA DINÁMICA DE CANJES: Trae los productos ordenados por los que piden menos puntos primero
 Route::get('/canjes', function () {
-    return view('pages.canjes');
+    $productos = Producto::orderBy('costo_puntos', 'asc')->get();
+
+    return view('pages.canjes', compact('productos'));
 })->name('canjes');
 
 Route::get('/prensa', function () {

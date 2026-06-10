@@ -28,53 +28,28 @@
     </p>
 
     <section class="productos">
-        <div class="producto">
-            <div class="circulo"><img src="{{ asset('img/shampoo.jpg') }}" alt="Yogurt"></div>
-            <p class="nombre-prod">Shampoo</p>
-            <p class="puntos">28 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="{{ asset('img/milo.jpg') }}" alt="Milo"></div>
-            <p class="nombre-prod">Milo</p>
-            <p class="puntos">10 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="{{ asset('img/ayudin.jpg') }}" alt="Ayudin"></div>
-            <p class="nombre-prod">Ayudin</p>
-            <p class="puntos">18 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="{{ asset('img/aceite.jpg') }}" alt="Aceite"></div>
-            <p class="nombre-prod">Aceite</p>
-            <p class="puntos">10 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="{{ asset('img/detergente.jpg') }}" alt="Detergente"></div>
-            <p class="nombre-prod">Detergente</p>
-            <p class="puntos">30 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="{{ asset('img/suaviante.jpg') }}" alt="Suavizante"></div>
-            <p class="nombre-prod">Suavizante</p>
-            <p class="puntos">35 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="{{ asset('img/desodorante.jpg') }}" alt="Desodorante"></div>
-            <p class="nombre-prod">Desodorante</p>
-            <p class="puntos">15 puntos</p>
-        </div>
-
-        <div class="producto">
-            <div class="circulo"><img src="{{ asset('img/olivo.jpg') }}" alt="Aceite de Olivo"></div>
-            <p class="nombre-prod">Aceite de Olivo</p>
-            <p class="puntos">20 puntos</p>
-        </div>
+        @if($productos->isEmpty())
+            {{-- Mensaje amigable por si aún no has registrado productos en Filament --}}
+            <p class="descripcion" style="text-align: center; grid-column: 1 / -1; width: 100%;">
+                Próximamente se añadirán nuevos productos para canje. ¡Sigue reciclando!
+            </p>
+        @else
+            @foreach($productos as $producto)
+                <div class="producto">
+                    <div class="circulo">
+                        @if($producto->imagen)
+                            {{-- Carga la imagen desde el almacenamiento de Filament --}}
+                            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="{{ $producto->nombre }}">
+                        @else
+                            {{-- Imagen de respaldo por si un producto se guarda sin foto --}}
+                            <img src="{{ asset('img/default-product.jpg') }}" alt="{{ $producto->nombre }}">
+                        @endif
+                    </div>
+                    <p class="nombre-prod">{{ $producto->nombre }}</p>
+                    <p class="puntos">{{ $producto->costo_puntos }} puntos</p>
+                </div>
+            @endforeach
+        @endif
     </section>
 </main>
 @endsection
