@@ -46,23 +46,13 @@ class User extends Authenticatable
         'puntos_acumulados' => 'integer',
     ];
 
-    /*
-    |--------------------------------------------------------------------------
-    | Relaciones de Eloquent
-    |--------------------------------------------------------------------------
-    */
 
-    /**
-     * Relación uno a uno con los datos extendidos del perfil del colaborador.
-     */
     public function detalles()
     {
         return $this->hasOne(DetalleColaborador::class, 'usuario_id');
     }
 
-    /**
-     * Relación de muchos a muchos con las Actividades en las que participa.
-     */
+
     public function actividades()
     {
         return $this->belongsToMany(Actividad::class, 'actividad_colaborador', 'usuario_id', 'actividad_id')
@@ -70,9 +60,7 @@ class User extends Authenticatable
                     ->withTimestamps();
     }
 
-    /**
-     * Relación de uno a muchos con los Canjes de productos solicitados.
-     */
+
     public function canjes()
     {
         return $this->hasMany(Canje::class, 'usuario_id');

@@ -25,9 +25,7 @@ class Colaborador extends Authenticatable
         'estado',
     ];
 
-    /**
-     * Oculta datos sensibles de sesiones y JSONs.
-     */
+
     protected $hidden = [
         'password',
         'remember_token',

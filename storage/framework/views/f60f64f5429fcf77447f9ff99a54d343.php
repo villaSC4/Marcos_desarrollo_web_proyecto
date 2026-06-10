@@ -126,24 +126,24 @@
             </div>
 
             <div class="content">
-                <p class="welcome">¡Hola, {{ $colaborador->nombres }}!</p>
+                <p class="welcome">¡Hola, <?php echo e($colaborador->nombres); ?>!</p>
                 <p class="text">
                     Tu esfuerzo tiene recompensa. Hemos procesado con éxito el canje de tus puntos acumulados por reciclar. ¡Gracias por contribuir a un mundo más sostenible!
                 </p>
 
                 <div class="product-card">
-                    @if($producto->imagen)
-                        <img class="product-image" src="{{ $message->embed(storage_path('app/public/' . $producto->imagen)) }}" alt="{{ $producto->nombre }}">
-                    @else
-                        <img class="product-image" src="{{ $message->embed(public_path('img/default-product.jpg')) }}" alt="{{ $producto->nombre }}">
-                    @endif
-                    <p class="product-name">{{ $producto->nombre }}</p>
-                    <p class="product-points">- {{ number_format($producto->costo_puntos, 0, '', '.') }} Puntos Eco</p>
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($producto->imagen): ?>
+                        <img class="product-image" src="<?php echo e($message->embed(storage_path('app/public/' . $producto->imagen))); ?>" alt="<?php echo e($producto->nombre); ?>">
+                    <?php else: ?>
+                        <img class="product-image" src="<?php echo e($message->embed(public_path('img/default-product.jpg'))); ?>" alt="<?php echo e($producto->nombre); ?>">
+                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                    <p class="product-name"><?php echo e($producto->nombre); ?></p>
+                    <p class="product-points">- <?php echo e(number_format($producto->costo_puntos, 0, '', '.')); ?> Puntos Eco</p>
                 </div>
 
                 <div class="code-box">
                     <p class="code-title">Código Único de Retiro</p>
-                    <p class="code-value">{{ $codigoCanje }}</p>
+                    <p class="code-value"><?php echo e($codigoCanje); ?></p>
                 </div>
 
                 <p class="text" style="font-size: 13px; margin-bottom: 0;">
@@ -157,4 +157,4 @@
         </div>
     </div>
 </body>
-</html>
+</html><?php /**PATH C:\Users\ASUS\Desktop\recicla-web\recicla-web\resources\views/emails/comprobante-canje.blade.php ENDPATH**/ ?>

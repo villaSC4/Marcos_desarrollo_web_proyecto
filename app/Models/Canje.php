@@ -18,13 +18,13 @@ class Canje extends Model
         'estado'
     ];
 
-    // Quién hizo el canje
+    
     public function usuario()
     {
         return $this->belongsTo(User::class, 'usuario_id');
     }
 
-    // Qué producto se canjeó
+
     public function producto()
     {
         return $this->belongsTo(Producto::class, 'producto_id');
