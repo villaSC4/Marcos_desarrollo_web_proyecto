@@ -19,7 +19,6 @@ class ProductoResource extends Resource
 {
     protected static ?string $model = Producto::class;
 
-    // Icono que aparecerá en la barra lateral izquierda del panel
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
     
     protected static ?string $navigationLabel = 'Productos de Canje';
@@ -61,9 +60,9 @@ class ProductoResource extends Resource
 
                         FileUpload::make('imagen')
                             ->label('Imagen del Producto')
-                            ->image() // Valida que solo suban imágenes (png, jpg, jpeg)
-                            ->directory('productos') // Se guardará en storage/app/public/productos
-                            ->imageCropAspectRatio('1:1') // Forzar formato cuadrado para que encaje perfecto en tus círculos CSS
+                            ->image() 
+                            ->directory('productos') 
+                            ->imageCropAspectRatio('1:1') 
                             ->columnSpanFull(),
                     ])->columns(2)
             ]);
@@ -75,7 +74,7 @@ class ProductoResource extends Resource
             ->columns([
                 ImageColumn::make('imagen')
                     ->label('Foto')
-                    ->circular(), // Vista previa circular en la tabla administrativa
+                    ->circular(), 
 
                 TextColumn::make('nombre')
                     ->label('Nombre')
@@ -86,7 +85,7 @@ class ProductoResource extends Resource
                     ->label('Puntos Necesarios')
                     ->sortable()
                     ->badge()
-                    ->color('success'), // Lo resalta en verde elegante
+                    ->color('success'), 
 
                 TextColumn::make('stock')
                     ->label('Stock Actual')
@@ -98,7 +97,6 @@ class ProductoResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                // Aquí puedes agregar filtros más adelante si los necesitas
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

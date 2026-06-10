@@ -18,11 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'nombre_usuario',    // Adaptado a tu diagrama
+        'name',    
         'email',
         'password',
-        'rol',               // Añadido para los roles del sistema
-        'puntos_acumulados', // Añadido para el sistema de incentivos
+        'rol',               
+        'puntos_acumulados', 
     ];
 
     /**

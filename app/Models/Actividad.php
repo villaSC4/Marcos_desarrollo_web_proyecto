@@ -15,14 +15,14 @@ class Actividad extends Model
         'nombre',
         'descripcion',
         'puntos_otorgados',
+        'direccion',
         'fecha_activity',
         'estado'
     ];
 
-    // Relación de muchos a muchos con los Usuarios (Colaboradores) que participan
-    public function usuarios()
+    public function colaboradores()
     {
-        return $this->belongsToMany(User::class, 'actividad_colaborador', 'actividad_id', 'usuario_id')
+        return $this->belongsToMany(Colaborador::class, 'actividad_colaborador', 'actividad_id', 'usuario_id')
                     ->withPivot('asistio')
                     ->withTimestamps();
     }

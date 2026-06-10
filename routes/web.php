@@ -1,116 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\News;
-use App\Models\Colaborador;
-use App\Models\Producto;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Páginas Públicas Principales
+Route::get('/', [PublicPageController::class, 'index'])->name('index');
+Route::get('/canjes', [PublicPageController::class, 'canjes'])->name('canjes');
+Route::get('/prensa', [PublicPageController::class, 'prensa'])->name('prensa');
+Route::get('/noticia/{slug}', [PublicPageController::class, 'detalleNoticia'])->name('noticia.detalle');
+Route::get('/recicla-en-casa', [PublicPageController::class, 'reciclaCasa'])->name('recicla.casa');
+Route::get('/socios', [PublicPageController::class, 'socios'])->name('socios');
+Route::get('/unete', [PublicPageController::class, 'unete'])->name('unete');
+Route::post('/canjes/{id}', [PublicPageController::class, 'procesarCanje'])->name('canjes.procesar');
+Route::post('/actividades/{id}/participar', [PublicPageController::class, 'participarActividad'])->name('actividades.participar');
 
-// RUTA DINÁMICA DE CANJES: Trae los productos ordenados por los que piden menos puntos primero
-Route::get('/canjes', function () {
-    $productos = Producto::orderBy('costo_puntos', 'asc')->get();
-
-    return view('pages.canjes', compact('productos'));
-})->name('canjes');
-
-Route::get('/prensa', function () {
-    $noticias = News::where('publicado', true)
-                    ->orderBy('fecha_publicacion', 'desc')
-                    ->get();
-
-    return view('pages.prensa', compact('noticias'));
-})->name('prensa');
-
-Route::get('/noticia/{slug}', function($slug) {
-    $noticia = News::where('slug', $slug)->firstOrFail();
-    return view('pages.detalle-noticia', compact('noticia'));
-})->name('noticia.detalle');
-
-Route::get('/recicla-en-casa', function () {
-    return view('pages.recicla-casa');
-})->name('recicla.casa');
-
-Route::get('/socios', function () {
-    return view('pages.socios');
-})->name('socios');
-
-Route::get('/unete', function () {
-    return view('pages.unete');
-})->name('unete');
-
-Route::get('/login', function () {
-    return view('pages.login');
-})->name('login');
-
-Route::post('/login', function (\Illuminate\Http\Request $request) {
-    $credentials = $request->validate([
-        'email'    => 'required|string|email',
-        'password' => 'required|string',
-    ]);
-
-    if (auth()->guard('colaborador')->attempt($credentials)) {
-        
-        $request->session()->regenerate();
-
-        return redirect()->intended('/')->with('success', '¡Bienvenido de vuelta!');
-    }
-
-    return back()->withErrors([
-        'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
-    ])->onlyInput('email'); 
-    
-})->name('login.store');
-
-
-Route::post('/logout', function (\Illuminate\Http\Request $request) {
-    auth()->guard('colaborador')->logout();
-    
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-
-    return redirect('/')->with('success', 'Has cerrado sesión exitosamente.');
-})->name('logout');
-
-Route::get('/registro', function () {
-    return view('pages.registro');
-})->name('register');
-
-Route::post('/registro', function (\Illuminate\Http\Request $request) {
-    $validated = $request->validate([
-        'nombres'          => 'required|string|max:100',
-        'apellidos'        => 'required|string|max:100',
-        'fecha_nacimiento' => 'required|date',
-        'genero'           => 'nullable|string|max:30', 
-        'email'            => 'required|string|email|max:255|unique:colaboradores,email',
-        'password'         => 'required|string|min:8|confirmed',
-    ]);
-
-    $colaborador = \App\Models\Colaborador::create([
-        'nombres'          => $validated['nombres'],
-        'apellidos'        => $validated['apellidos'],
-        'fecha_nacimiento' => $validated['fecha_nacimiento'],
-        'genero'           => $validated['genero'],
-        'email'            => $validated['email'],
-        'password'         => \Illuminate\Support\Facades\Hash::make($validated['password']),
-    ]);
-
-    auth()->guard('colaborador')->login($colaborador);
-
-    return redirect()->route('register')->with('success', '¡Cuenta de colaborador creada exitosamente!');
-})->name('register.store'); 
+// Rutas de Autenticación (Colaboradores)
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.store');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/registro', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/registro', [RegisterController::class, 'register'])->name('register.store');

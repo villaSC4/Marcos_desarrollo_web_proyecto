@@ -4,10 +4,120 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/unete.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .seccion-actividades { font-family: 'Montserrat', sans-serif; max-width: 900px; margin: 50px auto; padding: 0 20px; }
+        .titulo-actividades { text-align: center; color: #1e293b; font-weight: 700; margin-bottom: 30px; }
+        .grid-actividades { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card-actividad { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
+        .actividad-nombre { font-size: 1.2rem; font-weight: 700; color: #0f172a; margin: 0 0 10px 0; }
+        .actividad-desc { color: #64748b; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; }
+        .actividad-meta { font-size: 0.85rem; color: #475569; margin-bottom: 8px; font-weight: 600; }
+        .actividad-puntos { color: #10b981; font-weight: 700; }
+        .btn-participar { background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s; text-align: center; text-decoration: none; display: inline-block; margin-top: 15px; }
+        .btn-participar:hover { background: #059669; }
+        .btn-ya-inscrito { background: #cbd5e1; color: #64748b; cursor: not-allowed; }
+
+        .toast-container {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast-premium {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-left: 5px solid #10b981; 
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+            padding: 16px 24px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            min-width: 320px;
+            max-width: 420px;
+            transform: translateX(120%);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .toast-premium.show {
+            transform: translateX(0);
+        }
+
+        .toast-premium.toast-error {
+            border-left-color: #ef4444;
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toast-icon {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toast-text {
+            color: #334155;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            transition: color 0.2s;
+        }
+
+        .toast-close:hover {
+            color: #475569;
+        }
+    </style>
 @endpush
 
 @section('content')
 <main>
+    <div class="toast-container">
+        @if(session('success'))
+            <div class="toast-premium" id="toastNotification">
+                <div class="toast-content">
+                    <span class="toast-icon">🎉</span>
+                    <span class="toast-text">{{ session('success') }}</span>
+                </div>
+                <button class="toast-close" onclick="dismissToast()">✕</button>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="toast-premium toast-error" id="toastNotification">
+                <div class="toast-content">
+                    <span class="toast-icon">⚠️</span>
+                    <span class="toast-text">{{ session('error') }}</span>
+                </div>
+                <button class="toast-close" onclick="dismissToast()">✕</button>
+            </div>
+        @endif
+    </div>
+
     <section class="seccion-inscripcion">
         <div class="banner-superior-verde">
             <img src="{{ asset('img/plantadecorativa.webp') }}" class="planta-decorativa left" alt="Planta decorativa izquierda"/>
@@ -30,13 +140,44 @@
                     <p class="texto llamado">
                         Te invitamos a conocerlas y a inscribirte al programa municipal de reciclaje de tu distrito, para junt@s seguir cuidando nuestro planeta.
                     </p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeM3T5No9J6aG7DRGULVwy5vZYUXTi98kVI5XIE5g_yLa2x9A/viewform?usp=publish-editor" target="_blank" class="boton-sticker-verde">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeM3T5No9J6aG7DRGULVwy5vZYUXTi98kVI5XIE5g_yLa2x9A/viewform?usp=publish-editor" class="boton-sticker-verde">
                         INSCRÍBETE AQUÍ
                     </a>
                 </div>
             </div>
             <img src="{{ asset('img/Persona.webp') }}" alt="Persona Limpiando" class="img-persona">
         </section>
+    </section>
+
+    <section class="seccion-actividades">
+        <h2 class="titulo-actividades">PRÓXIMAS ACTIVIDADES COMUNITARIAS</h2>
+
+        <div class="grid-actividades">
+            @if($actividades->isEmpty())
+                <p style="text-align: center; color: #64748b; width: 100%; grid-column: 1/-1;">No hay actividades programadas por el momento. ¡Vuelve pronto!</p>
+            @else
+                @foreach($actividades as $actividad)
+                    <div class="card-actividad">
+                        <div>
+                            <h3 class="actividad-nombre">{{ $actividad->nombre }}</h3>
+                            <p class="actividad-desc">{{ $actividad->descripcion ?? 'Únete a nosotros en esta jornada en favor del medio ambiente.' }}</p>
+                            <p class="actividad-meta">📅 Fecha: {{ \Carbon\Carbon::parse($actividad->fecha_activity)->format('d/m/Y') }}</p>
+                            <p class="actividad-meta">📍 Lugar: {{ $actividad->direccion ?? 'Por definir' }}</p>
+                            <p class="actividad-meta">⭐ Recompensa: <span class="actividad-puntos">+{{ $actividad->puntos_otorgados }} Puntos</span></p>
+                        </div>
+
+                        <form method="POST" action="{{ route('actividades.participar', $actividad->id) }}">
+                            @csrf
+                            @if(auth()->guard('colaborador')->check() && auth()->guard('colaborador')->user()->actividades()->where('actividad_id', $actividad->id)->exists())
+                                <button type="button" class="btn-participar btn-ya-inscrito" disabled>Ya estás inscrito</button>
+                            @else
+                                <button type="submit" class="btn-participar">Participar</button>
+                            @endif
+                        </form>
+                    </div>
+                @endforeach
+            @endif
+        </div>
     </section>
 
     <section class="seccion-aliados py-5">
@@ -55,4 +196,29 @@
         </div>
     </section>
 </main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const toast = document.getElementById('toastNotification');
+        if (toast) {
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 150);
+
+            setTimeout(() => {
+                dismissToast();
+            }, 4500);
+        }
+    });
+
+    function dismissToast() {
+        const toast = document.getElementById('toastNotification');
+        if (toast) {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 400);
+        }
+    }
+</script>
 @endsection

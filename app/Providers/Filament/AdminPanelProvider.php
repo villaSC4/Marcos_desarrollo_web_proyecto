@@ -47,6 +47,11 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
+            ->widgets([
+                \App\Filament\Widgets\EcoEstadisticas::class,
+                \App\Filament\Widgets\UltimosColaboradores::class, 
+                \App\Filament\Widgets\EvolucionColaboradores::class,
+            ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->middleware([
                 EncryptCookies::class,

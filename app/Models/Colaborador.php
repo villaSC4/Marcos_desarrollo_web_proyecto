@@ -33,6 +33,12 @@ class Colaborador extends Authenticatable
         'remember_token',
     ];
 
+    public function actividades()
+    {
+        return $this->belongsToMany(Actividad::class, 'actividad_colaborador', 'usuario_id', 'actividad_id')
+                    ->withPivot('asistio')
+                    ->withTimestamps();
+    }
    
     protected function casts(): array
     {
