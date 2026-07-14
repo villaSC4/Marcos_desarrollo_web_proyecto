@@ -1,0 +1,431 @@
+/* Premium and Award-Winning Footer for Recicla Consciente */
+:root {
+    --color-footer-bg: #2d4f32; /* Original dark green */
+    --color-footer-dark: #1b301f; /* Darker tone for bottom bar */
+    --color-footer-deep: #122216; /* Ultimate deep green */
+    --color-footer-charcoal: #373022; /* Original charcoal/dark brown */
+    --color-footer-sage: #e1ede2; /* Light sage green for hover and accents */
+    --color-footer-accent: #1fa67a; /* Accent esmeralda */
+    --color-footer-white: #ffffff;
+    --transition-premium: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-modern {
+    background-color: transparent;
+    position: relative;
+    width: 100%;
+    margin-top: 140px; /* Space for floating impact banner */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Floating Impact Banner (Glassmorphism) */
+.footer-impact-banner {
+    position: absolute;
+    top: -90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding: 30px 20px;
+    transition: var(--transition-premium);
+}
+
+.footer-impact-banner:hover {
+    transform: translateX(-50%) translateY(-5px);
+    box-shadow: 0 30px 50px rgba(45, 79, 50, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.impact-stat-item {
+    text-align: center;
+    position: relative;
+}
+
+.impact-stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+}
+
+@media (max-width: 768px) {
+    .footer-impact-banner {
+        position: relative;
+        top: 0;
+        transform: none;
+        left: 0;
+        width: 100%;
+        margin-bottom: 40px;
+        background: var(--color-footer-charcoal);
+        backdrop-filter: none;
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+    .footer-impact-banner:hover {
+        transform: translateY(-3px);
+    }
+    .impact-stat-item:not(:last-child)::after {
+        display: none;
+    }
+    .impact-stat-item {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+    .impact-stat-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+.impact-stat-number {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--color-footer-white);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.impact-stat-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-footer-sage);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Wavy SVG Divider */
+.footer-wave-container {
+    position: absolute;
+    top: -55px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.footer-wave-svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-main {
+    background: linear-gradient(180deg, var(--color-footer-bg) 0%, var(--color-footer-dark) 100%);
+    position: relative;
+    z-index: 3;
+    padding-top: 80px; /* Leave space for wave & banner overlapping */
+}
+
+/* Brand Section */
+.footer-logo-box {
+    background-color: var(--color-footer-white);
+    padding: 14px 28px;
+    border-radius: 40px 10px 40px 10px; /* Custom organic leaf shape */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    transition: var(--transition-premium);
+}
+
+.footer-logo-box:hover {
+    transform: scale(1.05) rotate(-3deg);
+    box-shadow: 0 15px 35px rgba(225, 237, 226, 0.25);
+}
+
+.footer-logo-img {
+    max-height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-intro-text {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* Social icons with leaf-hover animation */
+.social-leaf-list {
+    display: flex;
+    gap: 12px;
+}
+
+.social-leaf-btn {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-footer-white) !important;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.15rem;
+    transition: var(--transition-premium);
+}
+
+.social-leaf-btn:hover {
+    background-color: var(--color-footer-white);
+    color: var(--color-footer-bg) !important;
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+    border-color: var(--color-footer-white);
+}
+
+/* Organic Columns Titles */
+.footer-section-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-footer-white);
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.footer-section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 32px;
+    height: 4px;
+    background-color: var(--color-footer-accent);
+    border-radius: 2px;
+    transition: var(--transition-premium);
+}
+
+.footer-section-title:hover::after {
+    width: 50px;
+    background-color: var(--color-footer-sage);
+}
+
+/* Navigation Links */
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links-list li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-link-item {
+    color: var(--color-text-green-light);
+    color: #A3CBB5;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-left: 0;
+    transition: var(--transition-premium);
+}
+
+.footer-link-item i.link-bullet {
+    font-size: 0.65rem;
+    color: var(--color-footer-accent);
+    margin-right: 0px;
+    width: 0;
+    opacity: 0;
+    transform: rotate(-45deg);
+    transition: var(--transition-premium);
+}
+
+.footer-link-item:hover {
+    color: var(--color-footer-white) !important;
+    padding-left: 14px;
+}
+
+.footer-link-item:hover i.link-bullet {
+    width: 14px;
+    opacity: 1;
+    margin-right: 8px;
+    transform: rotate(0deg);
+}
+
+/* Eco-Tip Card */
+.footer-tip-widget {
+    background-color: var(--color-footer-charcoal);
+    border-radius: 18px;
+    padding: 20px;
+    border-left: 5px solid var(--color-footer-accent);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: var(--transition-premium);
+}
+
+.footer-tip-widget:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border-left-color: var(--color-footer-white);
+}
+
+.tip-widget-header {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--color-footer-sage);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tip-widget-body {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Premium Newsletter Input */
+.footer-newsletter-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    transition: var(--transition-premium);
+}
+
+.footer-newsletter-box:focus-within {
+    border-color: var(--color-footer-accent);
+    box-shadow: 0 0 15px rgba(31, 166, 122, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-newsletter-input {
+    background: transparent !important;
+    border: none !important;
+    color: var(--color-footer-white) !important;
+    box-shadow: none !important;
+    font-size: 0.9rem;
+    padding-left: 18px;
+}
+
+.footer-newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-newsletter-btn {
+    background: var(--color-footer-white);
+    color: var(--color-footer-bg);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-premium);
+}
+
+.footer-newsletter-btn:hover {
+    background-color: var(--color-footer-sage);
+    transform: scale(1.1);
+}
+
+/* Partners Silhouette Ticker */
+.footer-partners-ticker-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.partners-ticker-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-footer-sage);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.ticker-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.ticker-logo-item {
+    height: 38px;
+    max-width: 120px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.45;
+    transition: var(--transition-premium);
+}
+
+.ticker-logo-item:hover {
+    opacity: 0.95;
+    transform: scale(1.06);
+}
+
+@media (max-width: 768px) {
+    .ticker-wrap {
+        gap: 25px;
+    }
+    .ticker-logo-item {
+        height: 30px;
+    }
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    background-color: var(--color-footer-deep);
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.leaf-pulse-icon {
+    font-size: 0.95rem;
+    animation: leafPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes leafPulse {
+    0% { transform: scale(1) rotate(0deg); color: var(--color-footer-accent); }
+    50% { transform: scale(1.2) rotate(15deg); color: #2ecc71; }
+    100% { transform: scale(1) rotate(0deg); color: var(--color-footer-accent); }
+}
+
+/* Back to Top Scroll Button */
+.back-to-top-footer {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: var(--color-footer-accent);
+    color: var(--color-footer-white);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: var(--transition-premium);
+    text-decoration: none;
+}
+
+.back-to-top-footer:hover {
+    background-color: var(--color-footer-white);
+    color: var(--color-footer-bg);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(255, 255, 255, 0.25);
+}

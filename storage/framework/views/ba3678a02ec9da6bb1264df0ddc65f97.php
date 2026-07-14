@@ -25,31 +25,62 @@
 
     <section class="seccion-videos-casa">
         <div class="container text-center">
-            <div class="rc-bloque-negro titulo-seccion" style="font-size: 35px ; padding: 12px 30px ; display: inline-block; line-height: 1.2;">EN CASA</div>
-            <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+            <div class="titulo-seccion-wrapper">
+                <span class="subtitulo-seccion-videos">Eco-Tutoriales</span>
+                <br>
+                <div class="titulo-seccion">EN CASA</div>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+                <!-- Video 1 -->
                 <div class="col">
-                    <div class="contenedor-video">
-                        <video controls poster="<?php echo e(asset('img/video1.png')); ?>">
-                            <source src="<?php echo e(asset('video/diaDelRecicladorMotivoTetraPak.mp4')); ?>" type="video/mp4">
-                            Tu navegador no soporta videos.
-                        </video>
-                        <p class="video-descripcion">Aprende a reciclar con los expertos</p>
+                    <div class="video-card-eco h-100">
+                        <div class="video-wrapper-inner">
+                            <video controls poster="<?php echo e(asset('img/video1.png')); ?>">
+                                <source src="<?php echo e(asset('video/diaDelRecicladorMotivoTetraPak.mp4')); ?>" type="video/mp4">
+                                Tu navegador no soporta videos.
+                            </video>
+                        </div>
+                        <div class="video-card-body">
+                            <h4 class="video-card-title">Día del Reciclador</h4>
+                            <p class="video-descripcion">
+                                Conoce cómo la recolección de envases de Tetra Pak impacta positivamente en el trabajo y vida de las familias recicladoras.
+                            </p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Video 2 -->
                 <div class="col">
-                    <div class="contenedor-video">
-                        <video controls poster="<?php echo e(asset('img/video2.png')); ?>">
-                            <source src="<?php echo e(asset('video/familiaDe3.mp4')); ?>" type="video/mp4">
-                        </video>
-                        <p class="video-descripcion">Aprende a reciclar con los expertos</p>
+                    <div class="video-card-eco h-100">
+                        <div class="video-wrapper-inner">
+                            <video controls poster="<?php echo e(asset('img/video2.png')); ?>">
+                                <source src="<?php echo e(asset('video/familiaDe3.mp4')); ?>" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-card-body">
+                            <h4 class="video-card-title">Depa de Soltero</h4>
+                            <p class="video-descripcion">
+                                Ideas y consejos prácticos para organizar tu espacio y reciclar botellas plásticas en departamentos pequeños.
+                            </p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Video 3 -->
                 <div class="col">
-                    <div class="contenedor-video">
-                        <video controls poster="<?php echo e(asset('img/video3.png')); ?>">
-                            <source src="<?php echo e(asset('video/motivo.mp4')); ?>" type="video/mp4">
-                        </video>
-                        <p class="video-descripcion">Aprende a reciclar con los expertos</p>
+                    <div class="video-card-eco h-100">
+                        <div class="video-wrapper-inner">
+                            <video controls poster="<?php echo e(asset('img/video3.png')); ?>">
+                                <source src="<?php echo e(asset('video/motivo.mp4')); ?>" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-card-body">
+                            <h4 class="video-card-title">Familia de 5</h4>
+                            <p class="video-descripcion">
+                                Descubre dinámicas y hábitos divertidos para involucrar a todos los miembros de tu hogar en el reciclaje diario.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -110,48 +141,57 @@
                         [
                             'nombre' => 'SEDE MORALES', 
                             'img' => 'estacion1 (1).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-12.0463,-77.0427&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=-12.0463,-77.0427'
                         ],
                         [
                             'nombre' => 'SEDE FRANCISCO CUELLAR', 
                             'img' => 'estacion1 (2).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-12.0831,-77.0024&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=-12.0831,-77.0024'
                         ],
                         [
-                            'nombre' => 'Av.Sebastián Lorente 610', 
+                            'nombre' => 'Av. Sebastián Lorente 610', 
                             'img' => 'estacion1 (3).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-12.0475,-77.0182&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=Av.+Sebastian+Lorente+610,+Lima'
                         ],
                         [
                             'nombre' => 'SEDE SAN MARTÍN', 
                             'img' => 'estacion1 (4).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-12.0284,-77.0492&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=-12.0284,-77.0492'
                         ],
                         [
                             'nombre' => 'Av. Enrique Meiggs', 
                             'img' => 'estacion1 (5).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-12.0411,-77.0645&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=Av.+Enrique+Meiggs,+Lima'
                         ],
                         [
                             'nombre' => 'SEDE CAJA DE AGUA', 
                             'img' => 'estacion1 (6).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-12.0271,-77.0148&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=-12.0271,-77.0148'
                         ],
                         // Las 3 sedes nuevas (Se ocultarán al inicio)
                         [
                             'nombre' => 'SEDE SAN HILARION', 
                             'img' => 'estacion1 (2).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-11.9982,-77.0021&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=-11.9982,-77.0021'
                         ],
                         [
                             'nombre' => 'SEDE BAYOVAR', 
                             'img' => 'estacion1 (3).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-11.9754,-76.9932&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=-11.9754,-76.9932'
                         ],
                         [
                             'nombre' => 'SEDE GRAU', 
                             'img' => 'estacion1 (6).png',
-                            'mapa_url' => $mapaBase . '&z=16&viewer=embed'
+                            'mapa_url' => $mapaBase . '&ll=-12.0545,-77.0253&z=17',
+                            'dir_url' => 'https://www.google.com/maps/search/?api=1&query=-12.0545,-77.0253'
                         ],
                     ];
                 ?>
@@ -159,11 +199,16 @@
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $sedes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $sede): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 
                 <div class="col <?php echo e($index >= 6 ? 'sede-nueva d-none' : ''); ?>">
-                    <div class="tarjeta-sede btn-cambiar-mapa" data-map-url="<?php echo e($sede['mapa_url']); ?>" style="cursor: pointer; transition: transform 0.2s;">
+                    <div class="tarjeta-sede btn-cambiar-mapa" data-map-url="<?php echo e($sede['mapa_url']); ?>">
                         <div class="contenedor-img-estacion">
                             <img src="<?php echo e(asset('img/' . $sede['img'])); ?>" alt="<?php echo e($sede['nombre']); ?>">
                         </div>
-                        <div class="nombre-sede-bloque"><?php echo e($sede['nombre']); ?></div>
+                        <div class="nombre-sede-bloque">
+                            <span><i class="fa-solid fa-location-dot me-2 text-success"></i><?php echo e($sede['nombre']); ?></span>
+                        </div>
+                        <a href="<?php echo e($sede['dir_url']); ?>" target="_blank" rel="noopener noreferrer" class="btn-como-llegar" onclick="event.stopPropagation();">
+                            Cómo llegar <i class="fa-solid fa-location-arrow"></i>
+                        </a>
                     </div>
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>

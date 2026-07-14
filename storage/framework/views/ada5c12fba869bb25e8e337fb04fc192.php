@@ -1,14 +1,10 @@
-<?php $__env->startSection('title', 'Productos de Canje'); ?>
+<?php $__env->startSection('title', 'Canjes - Recicla Consciente'); ?>
 
 <?php $__env->startPush('styles'); ?>
     <link rel="stylesheet" href="<?php echo e(asset('css/canjes.css')); ?>">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        .etiqueta1, .titulo-productos, .etiqueta2, .titulo3, .descripcion, .nombre-prod, .puntos, .modal-content, .alert {
-            font-family: 'Montserrat', sans-serif;
-        }
-
         .modal-back { 
             display: none; 
             position: fixed; 
@@ -16,169 +12,300 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            background: rgba(15, 23, 42, 0.6); 
-            backdrop-filter: blur(6px); 
+            background: rgba(45, 79, 50, 0.4); 
+            backdrop-filter: blur(8px); 
             z-index: 9999; 
             justify-content: center; 
             align-items: center; 
             transition: all 0.3s ease;
         }
-
-        .modal-content { 
+ 
+        .modal-content-custom { 
             background: #ffffff; 
             padding: 40px 30px; 
-            border-radius: 24px; 
+            border-radius: 28px; 
             text-align: center; 
-            max-width: 420px; 
+            max-width: 440px; 
             width: 90%; 
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-lg);
             transform: scale(0.9);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(0, 0, 0, 0.03);
         }
-
-        .modal-content h3 {
-            color: #1e293b;
-            font-size: 1.5rem;
-            font-weight: 700;
+ 
+        .modal-content-custom h3 {
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            font-weight: 800;
             margin-bottom: 12px;
             letter-spacing: -0.5px;
         }
-
-        .modal-content p {
-            color: #64748b;
-            font-size: 1rem;
+ 
+        .modal-content-custom p {
+            color: var(--color-muted);
+            font-size: 0.98rem;
             line-height: 1.6;
             margin-bottom: 30px;
         }
-
-        .modal-content strong {
-            color: #0f172a;
-            font-weight: 600;
+ 
+        .modal-content-custom strong {
+            color: var(--color-dark-charcoal);
+            font-weight: 700;
         }
-
+ 
         .contenedor-botones {
             display: flex;
             gap: 12px;
             justify-content: center;
         }
-
+ 
         .btn-modal { 
             flex: 1;
-            padding: 14px 24px; 
+            padding: 12px 24px; 
             border: none; 
-            border-radius: 12px; 
+            border-radius: 30px; 
             cursor: pointer; 
-            font-weight: 600; 
+            font-weight: 700; 
             font-size: 0.95rem;
-            transition: all 0.2s ease;
+            transition: var(--transition);
         }
-
+ 
         .btn-confirmar { 
-            background-color: #10b981; 
+            background-color: var(--color-secondary); 
             color: white; 
-            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 4px 10px rgba(31, 166, 122, 0.2);
         }
-
+ 
         .btn-confirmar:hover {
-            background-color: #059669;
+            background-color: #178d67;
             transform: translateY(-2px);
         }
-
+ 
         .btn-cancelar { 
             background-color: #f1f5f9;
-            color: #64748b; 
+            color: var(--color-muted); 
         }
-
+ 
         .btn-cancelar:hover {
             background-color: #e2e8f0;
-            color: #334155;
+            color: var(--color-dark-charcoal);
             transform: translateY(-2px);
         }
-
-        .producto { 
-            cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        .producto:hover { 
-            transform: translateY(-8px); 
-        }
-
-        /* Alertas estilizadas */
-        .alert { 
-            padding: 16px; 
-            margin: 20px auto; 
-            border-radius: 14px; 
-            max-width: 600px; 
+ 
+        .alert-custom { 
+            padding: 18px 24px; 
+            margin: 25px auto; 
+            border-radius: 16px; 
+            max-width: 700px; 
             text-align: center; 
-            font-weight: 600; 
-            font-size: 0.95rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            font-weight: 700; 
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
         }
-        .alert-success { background-color: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-        .alert-error { background-color: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; }
+        .alert-success { 
+            background-color: #ecfdf5; 
+            color: #065f46; 
+            border: 1px solid #a7f3d0; 
+        }
+        .alert-error { 
+            background-color: #fef2f2; 
+            color: #991b1b; 
+            border: 1px solid #fca5a5; 
+        }
     </style>
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
-<main>
-    <div class="decoracion">
-        <img src="<?php echo e(asset('img/decoracion1.png')); ?>" class="esquina arriba-izquierda">
-        <img src="<?php echo e(asset('img/decoracion1.png')); ?>" class="esquina arriba-derecha">
-        <img src="<?php echo e(asset('img/decoracion2.png')); ?>" class="esquina abajo-izquierda">
-        <img src="<?php echo e(asset('img/decoracion2.png')); ?>" class="esquina abajo-derecha">
+<main class="py-5">
+    <div class="container text-center mb-5">
+        <div class="etiquetas-container mb-3">
+            <span class="tag-canjes-sub">¡NUEVO!</span>
+            <br>
+            <span class="tag-canjes-title shadow">PRODUCTOS A CANJEAR</span>
+        </div>
+        <p class="mt-4 text-muted mx-auto" style="max-width: 650px; font-size: 1.05rem; line-height: 1.6;">
+            ¡Tu esfuerzo por cuidar el planeta da frutos! Acumula puntos reciclando y canjéalos por excelentes beneficios, productos ecológicos y descuentos exclusivos provistos por nuestros aliados estratégicos.
+        </p>
     </div>
 
-    <h1 class="etiqueta1">¡NUEVO!</h1>
-    <h2 class="titulo-productos">CONOCE LOS</h2>
-    <h3 class="etiqueta2">PRODUCTOS</h3>
-    <h4 class="titulo3">A CANJEAR</h4>
-
-    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('success')): ?>
-        <div class="alert alert-success"><?php echo e(session('success')); ?></div>
-    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('error')): ?>
-        <div class="alert alert-error"><?php echo e(session('error')); ?></div>
-    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-
-    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard('colaborador')->check()): ?>
-        <div style="text-align: center; margin: 15px 0;">
-            <span style="background: #ecfdf5; color: #10b981; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 1.05rem; border: 1px solid #a7f3d0;">
-                Tus Puntos: <?php echo e(number_format(auth()->guard('colaborador')->user()->puntos_acumulados, 0, '', '.')); ?> pts
-            </span>
-        </div>
-    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-
-    <p class="descripcion">
-        Los usuarios podrán acumular puntos cada vez que reciclen productos en los puntos de reciclaje registrados.
-        Estos puntos podrán ser canjeados por diferentes productos y beneficios ofrecidos por las empresas aliadas.
-    </p>
-
-    <section class="productos">
-        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($productos->isEmpty()): ?>
-            <p class="descripcion" style="text-align: center; grid-column: 1 / -1; width: 100%;">
-                Próximamente se añadirán nuevos productos para canje. ¡Sigue reciclando!
-            </p>
-        <?php else: ?>
-            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="producto" onclick="abrirModal('<?php echo e($producto->id); ?>', '<?php echo e($producto->nombre); ?>', '<?php echo e($producto->costo_puntos); ?>')">
-                    <div class="circulo">
-                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($producto->imagen): ?>
-                            <img src="<?php echo e(asset('storage/' . $producto->imagen)); ?>" alt="<?php echo e($producto->nombre); ?>">
-                        <?php else: ?>
-                            <img src="<?php echo e(asset('img/default-product.jpg')); ?>" alt="<?php echo e($producto->nombre); ?>">
-                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard('colaborador')->check()): ?>
+                    <?php
+                        $user = auth()->guard('colaborador')->user();
+                        $pts = $user->puntos_acumulados;
+                        $milestone = 2000;
+                        $progress = min(100, ($pts / $milestone) * 100);
+                    ?>
+                    <div class="points-dashboard-card text-start">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="points-title">Mi Eco-Saldo Actual</span>
+                            <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 px-3 py-2 rounded-pill font-weight-bold">
+                                <i class="fa-solid fa-leaf me-1"></i> Colaborador Activo
+                            </span>
+                        </div>
+                        <div class="points-value mb-3">
+                            <?php echo e(number_format($pts, 0, '', '.')); ?> <span>pts</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="progress-milestone-text">Progreso a mi siguiente meta (<?php echo e(number_format($milestone, 0, '', '.')); ?> pts)</span>
+                            <span class="progress-milestone-text fw-bold"><?php echo e(round($progress)); ?>%</span>
+                        </div>
+                        <div class="progress dashboard-progress mb-3">
+                            <div class="progress-bar dashboard-progress-bar" role="progressbar" style="width: <?php echo e($progress); ?>%" aria-valuenow="<?php echo e($progress); ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <p class="text-white-50 small mb-0">
+                            💡 <em>Tip Eco: ¡Cada botella plástica o caja de Tetra Pak te suma puntos! Dirígete a nuestras estaciones para canjear más recompensas.</em>
+                        </p>
                     </div>
-                    <p class="nombre-prod"><?php echo e($producto->nombre); ?></p>
-                    <p class="puntos"><?php echo e(number_format($producto->costo_puntos, 0, '', '.')); ?> puntos</p>
+                <?php else: ?>
+                    <div class="guest-points-card text-center">
+                        <div class="bg-light-sage rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background-color: var(--color-light-sage);">
+                            <i class="fa-solid fa-lock-open text-success fs-3"></i>
+                        </div>
+                        <h4 class="guest-title mb-2">¿Quieres canjear premios?</h4>
+                        <p class="text-muted small mb-4">
+                            Inicia sesión en tu cuenta de colaborador para ver tus puntos acumulados, revisar tu progreso y desbloquear premios ecológicos exclusivos.
+                        </p>
+                        <a href="<?php echo e(route('login')); ?>" class="btn btn-guest-login px-5">Iniciar Sesión 🔐</a>
+                    </div>
+                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="filter-pills-container">
+                    <span class="filter-pill active" data-filter="all">Todos los premios</span>
+                    <span class="filter-pill" data-filter="300">Hasta 300 pts</span>
+                    <span class="filter-pill" data-filter="700">301 - 700 pts</span>
+                    <span class="filter-pill" data-filter="more">Más de 700 pts</span>
                 </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('success')): ?>
+            <div class="alert-custom alert-success">
+                <i class="fa-solid fa-circle-check me-2"></i> <?php echo e(session('success')); ?>
+
+            </div>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-    </section>
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('error')): ?>
+            <div class="alert-custom alert-error">
+                <i class="fa-solid fa-triangle-exclamation me-2"></i> <?php echo e(session('error')); ?>
+
+            </div>
+        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+    </div>
+
+    <div class="container py-4">
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($productos->isEmpty()): ?>
+            <div class="text-center py-5">
+                <i class="fa-solid fa-gift text-muted display-2 mb-3"></i>
+                <h4 class="text-muted fw-bold">Próximamente más productos</h4>
+                <p class="text-muted small">Estamos actualizando nuestra lista de premios. ¡Sigue acumulando puntos!</p>
+            </div>
+        <?php else: ?>
+            <?php
+                $userLoggedIn = auth()->guard('colaborador')->check();
+                $userPoints = $userLoggedIn ? auth()->guard('colaborador')->user()->puntos_acumulados : 0;
+            ?>
+            
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="rewards-grid">
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $productos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php
+                        $isLocked = $userLoggedIn && ($userPoints < $producto->costo_puntos);
+                        $isOutOfStock = $producto->stock <= 0;
+                        
+                        $filterCat = 'more';
+                        if ($producto->costo_puntos <= 300) {
+                            $filterCat = '300';
+                        } elseif ($producto->costo_puntos <= 700) {
+                            $filterCat = '700';
+                        }
+                    ?>
+
+                    <div class="col reward-item-wrapper" data-points-category="<?php echo e($filterCat); ?>" data-points-value="<?php echo e($producto->costo_puntos); ?>">
+                        <div class="card-reward-premium <?php echo e($isLocked ? 'reward-locked' : ''); ?> <?php echo e($isOutOfStock ? 'reward-outofstock' : ''); ?>">
+                            
+                            <span class="cost-badge-floating shadow-sm">
+                                <?php echo e(number_format($producto->costo_puntos, 0, '', '.')); ?> pts
+                            </span>
+
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($isOutOfStock): ?>
+                                <span class="stock-badge-floating stock-badge-empty shadow-sm">Agotado</span>
+                            <?php elseif($producto->stock <= 3): ?>
+                                <span class="stock-badge-floating stock-badge-low shadow-sm">¡Últimos <?php echo e($producto->stock); ?>!</span>
+                            <?php else: ?>
+                                <span class="stock-badge-floating stock-badge-ok shadow-sm">Stock: <?php echo e($producto->stock); ?></span>
+                            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+
+                            <div class="reward-img-container">
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($producto->imagen): ?>
+                                    <img src="<?php echo e(asset('storage/' . $producto->imagen)); ?>" alt="<?php echo e($producto->nombre); ?>" class="reward-img">
+                                <?php else: ?>
+                                    <img src="<?php echo e(asset('img/default-product.jpg')); ?>" alt="<?php echo e($producto->nombre); ?>" class="reward-img">
+                                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($isLocked && !$isOutOfStock): ?>
+                                    <div class="locked-lock-indicator">
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>
+                                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                            </div>
+
+                            <div class="reward-body">
+                                <h5 class="reward-title"><?php echo e($producto->nombre); ?></h5>
+                                <p class="reward-desc text-muted">
+                                    <?php echo e(Str::limit($producto->descripcion, 90)); ?>
+
+                                </p>
+
+                                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!$userLoggedIn): ?>
+                                    <a href="<?php echo e(route('login')); ?>" class="btn-redeem-action btn-redeem-login">
+                                        Ingresa para Canjear
+                                    </a>
+                                <?php elseif($isOutOfStock): ?>
+                                    <button class="btn-redeem-action btn-redeem-outofstock" disabled>
+                                        Agotado temporalmente
+                                    </button>
+                                <?php elseif($isLocked): ?>
+                                    <button class="btn-redeem-action btn-redeem-locked shadow-sm" disabled>
+                                        Faltan <?php echo e(number_format($producto->costo_puntos - $userPoints, 0, '', '.')); ?> pts 🔒
+                                    </button>
+                                <?php else: ?>
+                                    <button class="btn-redeem-action btn-redeem-enabled" onclick="abrirModal('<?php echo e($producto->id); ?>', '<?php echo e($producto->nombre); ?>', '<?php echo e($producto->costo_puntos); ?>')">
+                                        Canjear Premio 🎁
+                                    </button>
+                                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+            </div>
+
+            <div id="no-rewards-message" style="display: none; transition: opacity 0.3s ease; opacity: 0;" class="text-center py-5 mt-4">
+                <i class="fa-solid fa-filter-circle-xmark text-muted display-3 mb-3"></i>
+                <h5 class="text-muted fw-bold">No se encontraron premios</h5>
+                <p class="text-muted small">No hay premios disponibles en este rango de puntos. ¡Sigue reciclando para acumular más!</p>
+            </div>
+        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+    </div>
 </main>
 
 <div id="modalCanje" class="modal-back">
-    <div class="modal-content" id="modalContent">
+    <div class="modal-content-custom shadow" id="modalContent">
+        <div class="text-center mb-3">
+            <div class="bg-success bg-opacity-10 text-success rounded-circle mx-auto d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background-color: rgba(31, 166, 122, 0.1);">
+                <i class="fa-solid fa-circle-question fs-3"></i>
+            </div>
+        </div>
         <h3>¿Confirmar Canje?</h3>
         <p id="modalMensaje"></p>
         
@@ -186,29 +313,80 @@
             <?php echo csrf_field(); ?>
             <div class="contenedor-botones">
                 <button type="button" class="btn-modal btn-cancelar" onclick="cerrarModal()">Cancelar</button>
-                <button type="submit" class="btn-modal btn-confirmar">Sí, canjear</button>
+                <button type="submit" class="btn-modal btn-confirmar shadow-sm">Sí, canjear</button>
             </div>
         </form>
     </div>
 </div>
 
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('scripts'); ?>
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const pills = document.querySelectorAll('.filter-pill');
+        const cards = document.querySelectorAll('.reward-item-wrapper');
+        const noResults = document.getElementById('no-rewards-message');
+
+        pills.forEach(pill => {
+            pill.addEventListener('click', function () {
+                pills.forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const cardCat = card.getAttribute('data-points-category');
+                    
+                    let matches = false;
+                    if (filter === 'all') {
+                        matches = true;
+                    } else if (filter === '300' && cardCat === '300') {
+                        matches = true;
+                    } else if (filter === '700' && cardCat === '700') {
+                        matches = true;
+                    } else if (filter === 'more' && cardCat === 'more') {
+                        matches = true;
+                    }
+
+                    if (matches) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                        visibleCount++;
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+
+                if (noResults) {
+                    if (visibleCount === 0) {
+                        noResults.style.display = 'block';
+                        setTimeout(() => { noResults.style.opacity = '1'; }, 10);
+                    } else {
+                        noResults.style.opacity = '0';
+                        setTimeout(() => { noResults.style.display = 'none'; }, 300);
+                    }
+                }
+            });
+        });
+    });
+
     function abrirModal(id, nombre, puntos) {
-        const estaLogueado = <?php echo json_encode(auth()->guard('colaborador')->check(), 15, 512) ?>;
-
-        if (!estaLogueado) {
-            alert("¡Hola! Primero debes iniciar sesión para poder canjear productos.");
-            window.location.href = "<?php echo e(route('login')); ?>";
-            return;
-        }
-
         const form = document.getElementById('formCanje');
         form.action = `/canjes/${id}`;
 
         const puntosFormateados = Number(puntos).toLocaleString('de-DE');
 
         const mensaje = document.getElementById('modalMensaje');
-        mensaje.innerHTML = `¿Estás seguro que deseas canjear <strong>${nombre}</strong> por <strong>${puntosFormateados} puntos</strong>?`;
+        mensaje.innerHTML = `¿Estás seguro que deseas canjear <strong>${nombre}</strong> por <strong>${puntosFormateados} puntos</strong>? <br><small class="text-muted">Se enviará un comprobante a tu correo registrado.</small>`;
 
         const modal = document.getElementById('modalCanje');
         const content = document.getElementById('modalContent');
@@ -229,5 +407,5 @@
         }, 150);
     }
 </script>
-<?php $__env->stopSection(); ?>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ASUS\Desktop\recicla-web\recicla-web\resources\views/pages/canjes.blade.php ENDPATH**/ ?>
