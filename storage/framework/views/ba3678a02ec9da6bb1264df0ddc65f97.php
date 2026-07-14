@@ -32,7 +32,6 @@
             </div>
             
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
-                <!-- Video 1 -->
                 <div class="col">
                     <div class="video-card-eco h-100">
                         <div class="video-wrapper-inner">
@@ -50,7 +49,6 @@
                     </div>
                 </div>
 
-                <!-- Video 2 -->
                 <div class="col">
                     <div class="video-card-eco h-100">
                         <div class="video-wrapper-inner">
@@ -67,7 +65,6 @@
                     </div>
                 </div>
 
-                <!-- Video 3 -->
                 <div class="col">
                     <div class="video-card-eco h-100">
                         <div class="video-wrapper-inner">
@@ -174,7 +171,6 @@
                             'mapa_url' => $mapaBase . '&ll=-12.0271,-77.0148&z=17',
                             'dir_url' => 'https://www.google.com/maps/search/?api=1&query=-12.0271,-77.0148'
                         ],
-                        // Las 3 sedes nuevas (Se ocultarán al inicio)
                         [
                             'nombre' => 'SEDE SAN HILARION', 
                             'img' => 'estacion1 (2).png',
@@ -197,7 +193,6 @@
                 ?>
 
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $sedes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $sede): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                
                 <div class="col <?php echo e($index >= 6 ? 'sede-nueva d-none' : ''); ?>">
                     <div class="tarjeta-sede btn-cambiar-mapa" data-map-url="<?php echo e($sede['mapa_url']); ?>">
                         <div class="contenedor-img-estacion">

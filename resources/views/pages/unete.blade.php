@@ -4,98 +4,11 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/unete.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        .seccion-actividades { font-family: 'Montserrat', sans-serif; max-width: 900px; margin: 50px auto; padding: 0 20px; }
-        .titulo-actividades { text-align: center; color: #1e293b; font-weight: 700; margin-bottom: 30px; }
-        .grid-actividades { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card-actividad { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: space-between; }
-        .actividad-nombre { font-size: 1.2rem; font-weight: 700; color: #0f172a; margin: 0 0 10px 0; }
-        .actividad-desc { color: #64748b; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; }
-        .actividad-meta { font-size: 0.85rem; color: #475569; margin-bottom: 8px; font-weight: 600; }
-        .actividad-puntos { color: #10b981; font-weight: 700; }
-        .btn-participar { background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s; text-align: center; text-decoration: none; display: inline-block; margin-top: 15px; }
-        .btn-participar:hover { background: #059669; }
-        .btn-ya-inscrito { background: #cbd5e1; color: #64748b; cursor: not-allowed; }
-
-        .toast-container {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .toast-premium {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-left: 5px solid #10b981; 
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
-            padding: 16px 24px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            min-width: 320px;
-            max-width: 420px;
-            transform: translateX(120%);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .toast-premium.show {
-            transform: translateX(0);
-        }
-
-        .toast-premium.toast-error {
-            border-left-color: #ef4444;
-        }
-
-        .toast-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .toast-icon {
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .toast-text {
-            color: #334155;
-            font-size: 0.95rem;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .toast-close {
-            background: none;
-            border: none;
-            color: #94a3b8;
-            cursor: pointer;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px;
-            transition: color 0.2s;
-        }
-
-        .toast-close:hover {
-            color: #475569;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 @endpush
 
 @section('content')
-<main>
+<main class="unete-page-container">
     <div class="toast-container">
         @if(session('success'))
             <div class="toast-premium" id="toastNotification">
@@ -128,7 +41,7 @@
                 <h2 class="txt-reciclaje">AL RECICLAJE!</h2>
             </div>
 
-            <div class="container text-center text-white mt-4">
+            <div class="container text-center mt-4">
                 <p>Sé parte de #ReciclaConsciente llevando tus envases reciclables a las estaciones de reciclaje de Plaza Vea, Vivanda y Makro.</p>
                 <p>Todos los residuos reciclables son gestionados por las Asociaciones de Recicladores formales que trabajan con las municipalidades aliadas de #ReciclaConsciente.</p>
             </div>
@@ -149,76 +62,135 @@
         </section>
     </section>
 
-    <section class="seccion-actividades">
-        <h2 class="titulo-actividades">PRÓXIMAS ACTIVIDADES COMUNITARIAS</h2>
+    <section class="seccion-actividades py-5" id="actividades">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-uppercase tracking-wider text-success fw-bold">JORNADAS DE IMPACTO</span>
+                <h2 class="section-title fw-bold text-dark-blue mt-2">Próximas Actividades Comunitarias</h2>
+                <p class="text-muted max-w-600 mx-auto">Participa de las campañas de recojo de basura, educación ecológica y arborización en San Juan de Lurigancho para acumular eco-puntos directos.</p>
+            </div>
 
-        <div class="grid-actividades">
-            @if($actividades->isEmpty())
-                <p style="text-align: center; color: #64748b; width: 100%; grid-column: 1/-1;">No hay actividades programadas por el momento. ¡Vuelve pronto!</p>
-            @else
-                @foreach($actividades as $actividad)
-                    <div class="card-actividad">
-                        <div>
-                            <h3 class="actividad-nombre">{{ $actividad->nombre }}</h3>
-                            <p class="actividad-desc">{{ $actividad->descripcion ?? 'Únete a nosotros en esta jornada en favor del medio ambiente.' }}</p>
-                            <p class="actividad-meta">📅 Fecha: {{ \Carbon\Carbon::parse($actividad->fecha_activity)->format('d/m/Y') }}</p>
-                            <p class="actividad-meta">📍 Lugar: {{ $actividad->direccion ?? 'Por definir' }}</p>
-                            <p class="actividad-meta">⭐ Recompensa: <span class="actividad-puntos">+{{ $actividad->puntos_otorgados }} Puntos</span></p>
+            <div class="row g-4">
+                @if($actividades->isEmpty())
+                    <div class="col-12 text-center py-5">
+                        <div class="p-5 bg-white rounded-4 border border-light shadow-xs max-w-600 mx-auto">
+                            <i class="fa-solid fa-circle-exclamation text-muted fs-1 mb-3"></i>
+                            <h5 class="fw-bold text-dark-blue">No hay actividades programadas por ahora</h5>
+                            <p class="text-muted small mb-0">Estamos planificando las próximas jornadas. ¡Regístrate y te enviaremos una notificación cuando estén listas!</p>
                         </div>
-
-                        <form method="POST" action="{{ route('actividades.participar', $actividad->id) }}">
-                            @csrf
-                            @if(auth()->guard('colaborador')->check() && auth()->guard('colaborador')->user()->actividades()->where('actividad_id', $actividad->id)->exists())
-                                <button type="button" class="btn-participar btn-ya-inscrito" disabled>Ya estás inscrito</button>
-                            @else
-                                <button type="submit" class="btn-participar">Participar</button>
-                            @endif
-                        </form>
                     </div>
-                @endforeach
-            @endif
+                @else
+                    @foreach($actividades as $actividad)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card-actividad-premium h-100 bg-white rounded-4 shadow-sm border-0 d-flex flex-column justify-content-between p-4">
+                                <div>
+                                    <h3 class="actividad-nombre-premium fw-bold text-dark-blue mb-1">{{ $actividad->nombre }}</h3>
+                                    <p class="actividad-desc-premium text-muted mb-4">
+                                        {{ $actividad->descripcion ?? 'Únete a nosotros en esta jornada en favor del medio ambiente y la sostenibilidad local.' }}
+                                    </p>
+                                    
+                                    <div class="actividad-details-premium">
+                                        <div class="d-flex align-items-center gap-2 mb-2 text-dark">
+                                            <span>📅</span>
+                                            <span><strong>Fecha:</strong> {{ \Carbon\Carbon::parse($actividad->fecha_activity)->format('d/m/Y') }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2 mb-2 text-dark">
+                                            <span>📍</span>
+                                            <span><strong>Lugar:</strong> {{ $actividad->direccion ?? 'Por definir' }}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-2 mb-4 text-dark">
+                                            <span>⭐</span>
+                                            <span><strong>Recompensa:</strong> <span class="text-success-custom fw-bold">+{{ $actividad->puntos_otorgados }} Puntos</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <form method="POST" action="{{ route('actividades.participar', $actividad->id) }}">
+                                    @csrf
+                                    @if(auth()->guard('colaborador')->check() && auth()->guard('colaborador')->user()->actividades()->where('actividad_id', $actividad->id)->exists())
+                                        <button type="button" class="btn-participar-premium btn-ya-inscrito w-100 py-2.5 rounded-3 fw-bold text-center" disabled>
+                                            Ya estás inscrito
+                                        </button>
+                                    @else
+                                        <button type="submit" class="btn-participar-premium w-100 py-2.5 rounded-3 fw-bold text-center">
+                                            Participar
+                                        </button>
+                                    @endif
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
         </div>
     </section>
 
-    <section class="seccion-aliados py-5">
-        <div class="text-center">
-            <h2 class="contenedor-titulo-aliados">MUNICIPALIDADES</h2>
-            <span class="sticker-aliados">ALIADAS</span>
-        </div>
+    <section class="seccion-aliados py-5 bg-white border-top border-light">
+        <div class="container text-center">
+            <span class="text-uppercase tracking-wider text-success fw-bold">RED INSTITUCIONAL</span>
+            <h2 class="section-title fw-bold text-dark-blue mt-2 mb-3">Municipalidades Aliadas</h2>
+            <p class="text-muted max-w-600 mx-auto mb-5">Trabajamos de la mano con los gobiernos locales para asegurar que cada residuo recolectado se derive a asociaciones formales autorizadas.</p>
 
-        <div class="grid-logos mt-5">
-            <div class="circulo-logo"><img src="{{ asset('img/MUNILIMA.webp') }}" alt="Muni Lima"></div>
-            <div class="circulo-logo"><img src="{{ asset('img/MUNILINCE.webp') }}" alt="Muni Lince"></div>
-            <div class="circulo-logo"><img src="{{ asset('img/MUNIRIMAC.webp') }}" alt="Muni Rimac"></div>
-            <div class="circulo-logo"><img src="{{ asset('img/MUNISJL.webp') }}" alt="Muni SJL"></div>
-            <div class="circulo-logo"><img src="{{ asset('img/MUNIVICTORIA.webp') }}" alt="Muni La Victoria"></div>
-            <div class="circulo-logo"><img src="{{ asset('img/SanBorja.webp') }}" alt="Muni San Borja"></div>
+            <div class="row g-4 align-items-center justify-content-center logo-allied-grid">
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="circulo-logo-premium mx-auto">
+                        <img src="{{ asset('img/MUNILIMA.webp') }}" alt="Municipalidad de Lima" class="img-fluid logo-gray-to-color">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="circulo-logo-premium mx-auto">
+                        <img src="{{ asset('img/MUNILINCE.webp') }}" alt="Municipalidad de Lince" class="img-fluid logo-gray-to-color">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="circulo-logo-premium mx-auto">
+                        <img src="{{ asset('img/MUNIRIMAC.webp') }}" alt="Municipalidad del Rímac" class="img-fluid logo-gray-to-color">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="circulo-logo-premium mx-auto">
+                        <img src="{{ asset('img/MUNISJL.webp') }}" alt="Municipalidad de San Juan de Lurigancho" class="img-fluid logo-gray-to-color">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="circulo-logo-premium mx-auto">
+                        <img src="{{ asset('img/MUNIVICTORIA.webp') }}" alt="Municipalidad de La Victoria" class="img-fluid logo-gray-to-color">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="circulo-logo-premium mx-auto">
+                        <img src="{{ asset('img/SanBorja.webp') }}" alt="Municipalidad de San Borja" class="img-fluid logo-gray-to-color">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </main>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const toast = document.getElementById('toastNotification');
-        if (toast) {
-            setTimeout(() => {
-                toast.classList.add('show');
-            }, 150);
-
-            setTimeout(() => {
-                dismissToast();
-            }, 4500);
-        }
-    });
-
-    function dismissToast() {
-        const toast = document.getElementById('toastNotification');
-        if (toast) {
-            toast.classList.remove('show');
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 400);
-        }
-    }
-</script>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toast = document.getElementById('toastNotification');
+            if (toast) {
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 150);
+
+                setTimeout(() => {
+                    dismissToast();
+                }, 6000);
+            }
+        });
+
+        function dismissToast() {
+            const toast = document.getElementById('toastNotification');
+            if (toast) {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 400);
+            }
+        }
+    </script>
+@endpush
