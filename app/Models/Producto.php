@@ -19,7 +19,7 @@ class Producto extends Model
         'imagen'
     ];
 
-    // Un producto puede tener muchos canjes registrados
+
     public function canjes()
     {
         return $this->hasMany(Canje::class, 'producto_id');

@@ -18,7 +18,7 @@ class NoticiaMultimedia extends Model
         'orden'
     ];
 
-    // Pertenece a una noticia (asumiendo que tu modelo para 'news' se llama News)
+ 
     public function noticia()
     {
         return $this->belongsTo(News::class, 'noticia_id');

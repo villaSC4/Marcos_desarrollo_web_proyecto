@@ -18,7 +18,7 @@ class DetalleColaborador extends Model
         'genero'
     ];
 
-    // Relación inversa: Pertenece a un único usuario único
+ 
     public function usuario()
     {
         return $this->belongsTo(User::class, 'usuario_id');
