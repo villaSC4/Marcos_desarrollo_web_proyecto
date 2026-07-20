@@ -31,10 +31,16 @@ Route::get('/registro', [RegisterController::class, 'showRegisterForm'])->name('
 Route::post('/registro', [RegisterController::class, 'register'])->name('register.store');
 
 Route::get('/init-app', function () {
+    $linkPath = public_path('storage');
+    if (is_link($linkPath) || file_exists($linkPath)) {
+        @unlink($linkPath);
+    }
+
     Artisan::call('storage:link');
-    Artisan::call('config:cache');
-    Artisan::call('route:cache');
+
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
     Artisan::call('view:clear');
 
-    return "¡Inicialización completada con éxito en Render!";
+    return "¡Inicialización completada con éxito en Render sin errores de permisos!";
 });
