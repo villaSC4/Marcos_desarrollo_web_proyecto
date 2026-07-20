@@ -30,14 +30,11 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/registro', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('/registro', [RegisterController::class, 'register'])->name('register.store');
 
-// Ruta de Inicialización para Render (Base de datos, Caché y Storage)
 Route::get('/init-app', function () {
-    Artisan::call('config:clear');
-    Artisan::call('route:clear');
-    Artisan::call('view:clear');
-    
-    Artisan::call('migrate --force');
     Artisan::call('storage:link');
-    
+    Artisan::call('config:cache');
+    Artisan::call('route:cache');
+    Artisan::call('view:clear');
+
     return "¡Inicialización completada con éxito en Render!";
 });
