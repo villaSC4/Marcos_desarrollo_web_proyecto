@@ -31,13 +31,7 @@ Route::get('/registro', [RegisterController::class, 'showRegisterForm'])->name('
 Route::post('/registro', [RegisterController::class, 'register'])->name('register.store');
 
 Route::get('/init-app', function () {
-    $linkPath = public_path('storage');
-    if (is_link($linkPath) || file_exists($linkPath)) {
-        @unlink($linkPath);
-    }
-
-    Artisan::call('storage:link');
-
+    // Limpiamos las cachés, que es lo único que el servidor web necesita refrescar
     Artisan::call('config:clear');
     Artisan::call('route:clear');
     Artisan::call('view:clear');
