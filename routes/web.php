@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -28,3 +29,15 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.store');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/registro', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('/registro', [RegisterController::class, 'register'])->name('register.store');
+
+// Ruta de Inicialización para Render (Base de datos, Caché y Storage)
+Route::get('/init-app', function () {
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    
+    Artisan::call('migrate --force');
+    Artisan::call('storage:link');
+    
+    return "¡Inicialización completada con éxito en Render!";
+});
